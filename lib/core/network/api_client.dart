@@ -1,7 +1,9 @@
 import 'package:dio/dio.dart';
 
+import '../auth/token_store.dart';
 import '../config/app_config.dart';
 import 'api_exception.dart';
+import 'bearer_interceptor.dart';
 
 /// Pembungkus dio — ini satu-satunya seam untuk test (lihat spec, bagian
 /// Testing Decisions): `HttpClientAdapter` dio bisa ditukar dengan adapter
@@ -12,9 +14,11 @@ import 'api_exception.dart';
 /// 2. memetakan `DioException` menjadi `ApiException` (story 40);
 /// 3. menyediakan method get/post/patch/delete yang nyaman dipakai modul.
 ///
-/// Interceptor Bearer + auto-refresh token ditambahkan di tiket 02.
+/// Bila [tokenStore] diisi, interseptor Bearer + auto-refresh (tiket 02)
+/// dipasang pada dio yang sama — sehingga seluruh trafik, termasuk
+/// panggilan refresh, tetap lewat satu boundary ini.
 class ApiClient {
-  ApiClient({HttpClientAdapter? adapter})
+  ApiClient({HttpClientAdapter? adapter, TokenStore? tokenStore})
     : dio = Dio(
         BaseOptions(
           baseUrl: AppConfig.baseUrl,
@@ -26,6 +30,9 @@ class ApiClient {
       ) {
     if (adapter != null) {
       dio.httpClientAdapter = adapter;
+    }
+    if (tokenStore != null) {
+      dio.interceptors.add(BearerInterceptor(dio, tokenStore));
     }
   }
 

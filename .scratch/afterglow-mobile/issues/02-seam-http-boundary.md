@@ -6,8 +6,8 @@
 
 **Status:** ready-for-agent
 
-- [ ] Semua request HTTP melewati satu boundary yang dapat ditukar di test
-- [ ] Test pembuktian: 401 → refresh token → retry sukses, memakai adapter palsu
-- [ ] Access & refresh token tersimpan di secure storage
-- [ ] Pola test (override provider + adapter palsu) terbentuk dan dipakai test pertama
-- [ ] Suite test hijau via `flutter test` tanpa jaringan sungguhan
+- [x] Semua request HTTP melewati satu boundary yang dapat ditukar di test
+- [x] Test pembuktian: 401 → refresh token → retry sukses, memakai adapter palsu
+- [x] Access & refresh token tersimpan di secure storage
+- [x] Pola test (override provider + adapter palsu) terbentuk dan dipakai test pertama
+- [x] Suite test hijau via `flutter test` tanpa jaringan sungguhan
