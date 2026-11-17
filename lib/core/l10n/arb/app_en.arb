@@ -1,0 +1,18 @@
+{
+  "@@locale": "en",
+  "appTitle": "Afterglow",
+  "navCatalog": "Catalog",
+  "navTickets": "Tickets",
+  "navHistory": "History",
+  "placeholderComingSoon": "This module will arrive after the foundation and previous modules are done.",
+  "healthCheckTitle": "Backend connection check",
+  "healthCheckDescription": "Tests connectivity to the Soundtix API from the emulator.",
+  "healthCheckRun": "Check /health/",
+  "healthCheckRunning": "Checking…",
+  "healthCheckSuccess": "Backend is reachable ✓",
+  "errorNetwork": "Server unreachable. Make sure the backend is running.",
+  "errorTimeout": "Connection timed out. Please try again.",
+  "errorServer": "The server is having problems. Try again later.",
+  "errorRequest": "Something went wrong. Please try again.",
+  "changeLanguage": "Change language"
+}
