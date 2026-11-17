@@ -9,20 +9,23 @@ import '../auth/token_store.dart';
 /// - [onRequest]: memasang header `Authorization: Bearer <access token>`
 ///   dari [TokenStore] pada setiap request yang tidak menandai dirinya
 ///   bebas-auth (`skip_auth`), mis. request refresh itu sendiri.
-/// - [onError]: saat request kena 401, token di-refresh lewat
-///   `POST /auth/refresh` lalu request asli di-retry sekali. Refresh
-///   berjalan tunggal (single-flight): 401 yang datang bersamaan menunggu
-///   refresh yang sama. Bila refresh gagal, token dibuang dan 401 asli
-///   diteruskan ke lapisan atas.
+/// - [onError]: saat request BER-Bearer kena 401, access token dianggap
+///   kedaluwarsa: token di-refresh lewat `POST /auth/refresh` lalu request
+///   asli di-retry sekali. 401 pada request tanpa Bearer (mis. login salah
+///   kredensial) diteruskan apa adanya — bukan alasan untuk refresh.
+///   Refresh berjalan tunggal (single-flight): 401 yang datang bersamaan
+///   menunggu refresh yang sama. Bila refresh gagal — karena alasan apa
+///   pun — token dibuang dan 401 asli diteruskan ke lapisan atas.
 ///
 /// Interceptor ini memakai [Dio] yang sama dengan request asli, sehingga
 /// panggilan refresh juga lewat seam HTTP dan bisa diemulasi adapter palsu.
 class BearerInterceptor extends Interceptor {
-  BearerInterceptor(this._dio, this._tokenStore, {this.refreshPath = '/auth/refresh'});
+  BearerInterceptor(this._dio, this._tokenStore);
+
+  static const _refreshPath = '/auth/refresh';
 
   final Dio _dio;
   final TokenStore _tokenStore;
-  final String refreshPath;
 
   Completer<({String accessToken, String refreshToken})>? _refreshInFlight;
 
@@ -53,11 +56,16 @@ class BearerInterceptor extends Interceptor {
       return handler.next(err);
     }
 
+    // Hanya request yang memang membawa Bearer yang dianggap mengalami
+    // access token kedaluwarsa; sisanya (mis. login ditolak) diteruskan.
     final oldAccess = _bearerTokenOf(options);
-    final currentAccess = await _tokenStore.readAccessToken();
+    if (oldAccess == null) {
+      return handler.next(err);
+    }
 
     // Token sudah diganti oleh refresh lain (mis. 401 konkuren yang
     // keburu selesai) — langsung retry dengan token yang sekarang.
+    final currentAccess = await _tokenStore.readAccessToken();
     if (currentAccess != null && currentAccess != oldAccess) {
       return _retry(options, handler);
     }
@@ -68,12 +76,10 @@ class BearerInterceptor extends Interceptor {
     }
 
     try {
-      final tokens = await _refreshSingleFlight(refreshToken);
-      await _tokenStore.save(
-        accessToken: tokens.accessToken,
-        refreshToken: tokens.refreshToken,
-      );
-    } on DioException {
+      await _refreshSingleFlight(refreshToken);
+    } on Object {
+      // Gagal refresh karena alasan apa pun berarti sesi tidak bisa
+      // diselamatkan: buang token dan teruskan 401 asli ke lapisan atas.
       await _tokenStore.clear();
       return handler.next(err);
     }
@@ -99,6 +105,9 @@ class BearerInterceptor extends Interceptor {
 
   /// Refresh tunggal: bila sudah ada refresh berjalan, ikut menunggu
   /// hasilnya; bila tidak, mulai refresh baru dan bagikan hasilnya.
+  /// Penyimpanan token baru juga bagian dari siklus ini supaya tidak ada
+  /// celah "completer selesai tapi token belum tersimpan" yang bisa
+  /// memicu refresh kedua oleh 401 yang datang di tengahnya.
   Future<({String accessToken, String refreshToken})> _refreshSingleFlight(
     String refreshToken,
   ) {
@@ -110,7 +119,7 @@ class BearerInterceptor extends Interceptor {
     // Selesaikan completer lalu kosongkan referensinya segera supaya
     // refresh berikutnya (mis. sesi benar-benar kedaluwarsa lagi) memulai
     // refresh baru, bukan menunggu completer usang yang sudah selesai.
-    _performRefresh(refreshToken).then(
+    _refreshAndSave(refreshToken).then(
       (tokens) {
         if (identical(_refreshInFlight, completer)) _refreshInFlight = null;
         completer.complete(tokens);
@@ -123,11 +132,11 @@ class BearerInterceptor extends Interceptor {
     return completer.future;
   }
 
-  Future<({String accessToken, String refreshToken})> _performRefresh(
+  Future<({String accessToken, String refreshToken})> _refreshAndSave(
     String refreshToken,
   ) async {
     final response = await _dio.post<Map<String, dynamic>>(
-      refreshPath,
+      _refreshPath,
       data: {'refresh_token': refreshToken},
       options: Options(extra: {_kSkipAuth: true}),
     );
@@ -136,10 +145,11 @@ class BearerInterceptor extends Interceptor {
     final refresh = body?['refresh_token'] as String? ?? refreshToken;
     if (access == null) {
       throw DioException(
-        requestOptions: RequestOptions(path: refreshPath),
+        requestOptions: RequestOptions(path: _refreshPath),
         message: 'respons refresh tidak berisi access_token',
       );
     }
+    await _tokenStore.save(accessToken: access, refreshToken: refresh);
     return (accessToken: access, refreshToken: refresh);
   }
 

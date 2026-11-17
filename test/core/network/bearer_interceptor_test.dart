@@ -1,9 +1,17 @@
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:livora_mobile/core/network/api_client.dart';
 import 'package:livora_mobile/core/network/api_exception.dart';
+import 'package:livora_mobile/core/network/providers.dart';
 
 import '../../support/fake_http_adapter.dart';
 import '../../support/memory_token_store.dart';
+
+/// Pola test untuk semua modul (tiket 02): ApiClient dibangun di ATAS
+/// adapter palsu (seam HTTP) + token store di memori, lalu dipasang lewat
+/// override provider Riverpod — tidak ada jaringan sungguhan.
+ApiClient _client(MemoryTokenStore store, FakeHttpAdapter adapter) =>
+    ApiClient(adapter: adapter, tokenStore: store);
 
 void main() {
   group('BearerInterceptor (seam: ApiClient + adapter palsu)', () {
@@ -14,10 +22,7 @@ void main() {
         refreshToken: 'refresh-lama',
       );
       final adapter = FakeHttpAdapter(200, {'status': 'ok'});
-      final client = ApiClient(
-        adapter: adapter,
-        tokenStore: store,
-      );
+      final client = _client(store, adapter);
 
       await client.get<Map<String, dynamic>>('/health/');
 
@@ -28,17 +33,18 @@ void main() {
         () async {
       final store = MemoryTokenStore();
       final adapter = FakeHttpAdapter(200, {'status': 'ok'});
-      final client = ApiClient(
-        adapter: adapter,
-        tokenStore: store,
-      );
+      final client = _client(store, adapter);
 
       await client.get<Map<String, dynamic>>('/health/');
 
       expect(adapter.lastRequestAuthorization, isNull);
     });
 
-    test('401 → refresh → retry sukses, token baru tersimpan', () async {
+    // Test pembuktian utama tiket 02, memakai pola "override provider +
+    // adapter palsu" yang akan diikuti semua modul berikutnya.
+    test(
+        'pola override provider: 401 → refresh → retry sukses, '
+        'token baru tersimpan', () async {
       final store = MemoryTokenStore(
         accessToken: 'access-usang',
         refreshToken: 'refresh-1',
@@ -51,12 +57,18 @@ void main() {
         }),
         FakeResponse(200, {'data': 'rahasia'}),
       ]);
-      final client = ApiClient(
-        adapter: adapter,
-        tokenStore: store,
-      );
 
-      final data = await client.get<Map<String, dynamic>>('/catalog/events');
+      final container = ProviderContainer(
+        overrides: [
+          apiClientProvider.overrideWithValue(_client(store, adapter)),
+        ],
+      );
+      addTearDown(container.dispose);
+
+      final data =
+          await container.read(apiClientProvider).get<Map<String, dynamic>>(
+                '/catalog/events',
+              );
 
       // Retry memakai access token baru dan berhasil.
       expect(data['data'], 'rahasia');
@@ -88,10 +100,7 @@ void main() {
         FakeResponse(401, {'detail': 'token kedaluwarsa'}),
         FakeResponse(401, {'detail': 'refresh token tidak valid'}),
       ]);
-      final client = ApiClient(
-        adapter: adapter,
-        tokenStore: store,
-      );
+      final client = _client(store, adapter);
 
       await expectLater(
         client.get<Map<String, dynamic>>('/catalog/events'),
@@ -113,10 +122,7 @@ void main() {
         () async {
       final store = MemoryTokenStore(accessToken: 'access-usang');
       final adapter = FakeHttpAdapter(401, {'detail': 'token kedaluwarsa'});
-      final client = ApiClient(
-        adapter: adapter,
-        tokenStore: store,
-      );
+      final client = _client(store, adapter);
 
       await expectLater(
         client.get<Map<String, dynamic>>('/catalog/events'),
@@ -132,6 +138,38 @@ void main() {
         adapter.requests.where((r) => r.url.endsWith('/auth/refresh')),
         isEmpty,
       );
+    });
+
+    test('401 pada request tanpa Bearer (mis. login ditolak) tidak memicu refresh',
+        () async {
+      // Sesi kosong: request berjalan tanpa header Authorization.
+      final store = MemoryTokenStore();
+      final adapter = FakeHttpAdapter.queue([
+        FakeResponse(401, {'detail': 'OTP salah'}),
+      ]);
+      final client = _client(store, adapter);
+
+      await expectLater(
+        client.post<Map<String, dynamic>>(
+          '/auth/verify-otp',
+          body: {'email': 'buyer@soundtix.id', 'otp': '000000'},
+        ),
+        throwsA(
+          isA<ApiException>()
+              .having((e) => e.kind, 'kind', ApiExceptionKind.request)
+              .having((e) => e.statusCode, 'statusCode', 401),
+        ),
+      );
+
+      // Hanya request asli — 401 bukan karena token kedaluwarsa.
+      expect(adapter.requests, hasLength(1));
+      expect(
+        adapter.requests.where((r) => r.url.endsWith('/auth/refresh')),
+        isEmpty,
+      );
+      // Token tidak tersentuh.
+      expect(store.accessToken, isNull);
+      expect(store.refreshToken, isNull);
     });
 
     test('dua 401 bersamaan → refresh hanya sekali, keduanya retry sukses',
@@ -150,10 +188,7 @@ void main() {
         FakeResponse(200, {'data': 'rahasia'}),
         FakeResponse(200, {'data': 'rahasia'}),
       ]);
-      final client = ApiClient(
-        adapter: adapter,
-        tokenStore: store,
-      );
+      final client = _client(store, adapter);
 
       final results = await Future.wait([
         client.get<Map<String, dynamic>>('/catalog/events'),

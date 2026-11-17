@@ -10,6 +10,8 @@ class SecureTokenStore implements TokenStore {
 
   final FlutterSecureStorage _storage;
 
+  // Prefiks "soundtix" mengikuti nama backend (platform Soundtix); repo
+  // aplikasi ini bernama livora_mobile — jangan menyeragamkan prefiks.
   static const _accessKey = 'soundtix_access_token';
   static const _refreshKey = 'soundtix_refresh_token';
 

@@ -102,7 +102,17 @@ class FakeHttpAdapter implements HttpClientAdapter {
     if (queue == null) {
       current = FakeResponse(statusCode, body);
     } else {
-      if (_queueIndex >= queue.length) _queueIndex = queue.length - 1;
+      // Antrean habis = perilaku tidak terduga dalam test. Melempar
+      // (bukan mengulang respons terakhir) supaya bug request berlebih
+      // tidak tersamar jadi sukses.
+      if (_queueIndex >= queue.length) {
+        throw DioException(
+          requestOptions: options,
+          message:
+              'antrean respons adapter palsu habis '
+              '(permintaan ke-${_queueIndex + 1} tak terduga)',
+        );
+      }
       current = queue[_queueIndex++];
     }
     return ResponseBody.fromString(
