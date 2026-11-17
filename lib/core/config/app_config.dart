@@ -5,7 +5,20 @@
 abstract final class AppConfig {
   /// Base URL backend Soundtix.
   ///
-  /// `10.0.2.2` adalah alias localhost dari Android emulator.
+  /// Default `http://10.0.2.2:3000`: alias localhost dari Android emulator.
   /// Port mengikuti backend Bun (default 3000); sesuaikan bila berbeda.
-  static const String baseUrl = 'http://10.0.2.2:3000';
+  ///
+  /// Untuk perangkat fisik, base URL bisa diganti TANPA mengedit kode, lewat
+  /// `--dart-define` saat menjalankan aplikasi, contoh:
+  ///
+  /// ```
+  /// flutter run --dart-define=SOUNDTIX_BASE_URL=http://192.168.1.10:3000
+  /// ```
+  ///
+  /// Saat backend nanti di-deploy (Fakta tertunda #3), cukup ubah default di
+  /// sini — tidak ada perubahan kode lain.
+  static const String baseUrl = String.fromEnvironment(
+    'SOUNDTIX_BASE_URL',
+    defaultValue: 'http://10.0.2.2:3000',
+  );
 }
