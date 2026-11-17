@@ -1,0 +1,20 @@
+{
+  "@@locale": "id",
+  "appTitle": "Afterglow",
+  "navCatalog": "Katalog",
+  "navTickets": "Tiket",
+  "navHistory": "Riwayat",
+  "placeholderComingSoon": "Modul ini akan hadir setelah fondasi dan modul sebelumnya selesai.",
+  "healthCheckTitle": "Cek koneksi backend",
+  "healthCheckDescription": "Menguji konektivitas ke Soundtix API dari emulator.",
+  "healthCheckRun": "Cek /health/",
+  "healthCheckRunning": "Memeriksa…",
+  "healthCheckSuccess": "Backend terjangkau ✓",
+  "errorNetwork": "Server tidak terjangkau. Pastikan backend berjalan.",
+  "errorTimeout": "Koneksi habis waktu. Silakan coba lagi.",
+  "errorServer": "Server sedang bermasalah. Coba lagi nanti.",
+  "errorRequest": "Terjadi kesalahan. Silakan coba lagi.",
+  "changeLanguage": "Ganti bahasa",
+  "languageIndonesian": "Bahasa Indonesia",
+  "languageEnglish": "English"
+}
