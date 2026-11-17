@@ -56,4 +56,10 @@ class AppLocalizationsId extends AppLocalizations {
 
   @override
   String get changeLanguage => 'Ganti bahasa';
+
+  @override
+  String get languageIndonesian => 'Bahasa Indonesia';
+
+  @override
+  String get languageEnglish => 'English';
 }

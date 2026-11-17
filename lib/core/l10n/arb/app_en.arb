@@ -14,5 +14,7 @@
   "errorTimeout": "Connection timed out. Please try again.",
   "errorServer": "The server is having problems. Try again later.",
   "errorRequest": "Something went wrong. Please try again.",
-  "changeLanguage": "Change language"
+  "changeLanguage": "Change language",
+  "languageIndonesian": "Bahasa Indonesia",
+  "languageEnglish": "English"
 }

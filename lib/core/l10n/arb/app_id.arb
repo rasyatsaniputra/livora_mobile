@@ -14,5 +14,7 @@
   "errorTimeout": "Koneksi habis waktu. Silakan coba lagi.",
   "errorServer": "Server sedang bermasalah. Coba lagi nanti.",
   "errorRequest": "Terjadi kesalahan. Silakan coba lagi.",
-  "changeLanguage": "Ganti bahasa"
+  "changeLanguage": "Ganti bahasa",
+  "languageIndonesian": "Bahasa Indonesia",
+  "languageEnglish": "English"
 }

@@ -43,9 +43,15 @@ class _LanguageToggle extends ConsumerWidget {
       initialValue: locale.languageCode,
       onSelected: (code) =>
           ref.read(localeControllerProvider.notifier).setLocale(Locale(code)),
-      itemBuilder: (context) => const [
-        PopupMenuItem(value: 'id', child: Text('Bahasa Indonesia')),
-        PopupMenuItem(value: 'en', child: Text('English')),
+      itemBuilder: (context) => [
+        PopupMenuItem(
+          value: 'id',
+          child: Text(l10n.languageIndonesian),
+        ),
+        PopupMenuItem(
+          value: 'en',
+          child: Text(l10n.languageEnglish),
+        ),
       ],
     );
   }

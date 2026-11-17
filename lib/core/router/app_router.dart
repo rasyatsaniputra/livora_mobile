@@ -3,9 +3,9 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../features/catalog/presentation/catalog_screen.dart';
-import '../../features/e_ticket/presentation/tickets_screen.dart';
-import '../../features/history/presentation/history_screen.dart';
 import '../l10n/generated/app_localizations.dart';
+import '../presentation/placeholder_screen.dart';
+import '../presentation/splash_screen.dart';
 
 /// Routing declarative (go_router) dengan shell untuk bottom navigation
 /// (keputusan R1 bagian 01). Alur dalam (login → checkout → bayar → e-tiket)
@@ -15,8 +15,12 @@ import '../l10n/generated/app_localizations.dart';
 /// di tiket 02 dan 05.
 final appRouterProvider = Provider<GoRouter>((ref) {
   return GoRouter(
-    initialLocation: '/catalog',
+    initialLocation: '/',
     routes: [
+      GoRoute(
+        path: '/',
+        builder: (context, state) => const SplashScreen(),
+      ),
       StatefulShellRoute.indexedStack(
         builder: (context, state, shell) => _ShellScaffold(shell: shell),
         branches: [
@@ -29,13 +33,19 @@ final appRouterProvider = Provider<GoRouter>((ref) {
           StatefulShellBranch(routes: [
             GoRoute(
               path: '/tickets',
-              builder: (context, state) => const TicketsScreen(),
+              builder: (context, state) {
+                final l10n = AppLocalizations.of(context)!;
+                return PlaceholderScreen(title: l10n.navTickets);
+              },
             ),
           ]),
           StatefulShellBranch(routes: [
             GoRoute(
               path: '/history',
-              builder: (context, state) => const HistoryScreen(),
+              builder: (context, state) {
+                final l10n = AppLocalizations.of(context)!;
+                return PlaceholderScreen(title: l10n.navHistory);
+              },
             ),
           ]),
         ],

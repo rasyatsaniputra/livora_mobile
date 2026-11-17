@@ -187,6 +187,18 @@ abstract class AppLocalizations {
   /// In id, this message translates to:
   /// **'Ganti bahasa'**
   String get changeLanguage;
+
+  /// No description provided for @languageIndonesian.
+  ///
+  /// In id, this message translates to:
+  /// **'Bahasa Indonesia'**
+  String get languageIndonesian;
+
+  /// No description provided for @languageEnglish.
+  ///
+  /// In id, this message translates to:
+  /// **'English'**
+  String get languageEnglish;
 }
 
 class _AppLocalizationsDelegate
