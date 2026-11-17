@@ -6,10 +6,10 @@
 
 **Status:** ready-for-agent
 
-- [ ] App jalan di emulator; splash Afterglow tampil lalu masuk skeleton navigasi
-- [ ] Tema light & dark keduanya tampil benar mengikuti setting sistem; tidak ada warna hardcode di luar titik tema
-- [ ] Teks UI lewat key i18n (ID default), tidak ada literal string di alur awal
-- [ ] Halaman smoke memanggil health Soundtix dan menampilkan hasil OK / pesan error yang jelas
-- [ ] Base URL dapat diganti di satu tempat konfigurasi tanpa menyentuh kode lain
-- [ ] Logo & launcher icon placeholder terpasang
-- [ ] Struktur folder feature-first untuk 7 modul (auth, catalog, checkout, payment, e-ticket, history, core) tersedia
+- [x] App jalan di emulator; splash Afterglow tampil lalu masuk skeleton navigasi
+- [x] Tema light & dark keduanya tampil benar mengikuti setting sistem; tidak ada warna hardcode di luar titik tema
+- [x] Teks UI lewat key i18n (ID default), tidak ada literal string di alur awal
+- [x] Halaman smoke memanggil health Soundtix dan menampilkan hasil OK / pesan error yang jelas
+- [x] Base URL dapat diganti di satu tempat konfigurasi tanpa menyentuh kode lain
+- [x] Logo & launcher icon placeholder terpasang
+- [x] Struktur folder feature-first untuk 7 modul (auth, catalog, checkout, payment, e-ticket, history, core) tersedia
