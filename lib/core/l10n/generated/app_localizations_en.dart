@@ -62,4 +62,75 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get languageEnglish => 'English';
+
+  @override
+  String get registerEntryTooltip => 'Create a new account';
+
+  @override
+  String get registerTitle => 'Create Account';
+
+  @override
+  String get registerSubtitle =>
+      'Create your Afterglow account — a verification code will be sent to your email.';
+
+  @override
+  String get registerNameLabel => 'Full name';
+
+  @override
+  String get registerEmailLabel => 'Email';
+
+  @override
+  String get registerNameInvalid => 'Name must be at least 3 characters.';
+
+  @override
+  String get registerEmailInvalid => 'Invalid email format.';
+
+  @override
+  String get registerSubmit => 'Sign up';
+
+  @override
+  String get registerSubmitting => 'Signing up…';
+
+  @override
+  String get errorEmailRegistered =>
+      'This email is already registered. Use a different email.';
+
+  @override
+  String get otpTitle => 'OTP Verification';
+
+  @override
+  String otpSentTo(String email) {
+    return 'Enter the 6-digit OTP code sent to $email.';
+  }
+
+  @override
+  String get otpFieldLabel => 'OTP code';
+
+  @override
+  String get otpVerify => 'Verify';
+
+  @override
+  String get otpVerifying => 'Verifying…';
+
+  @override
+  String get otpResend => 'Resend OTP';
+
+  @override
+  String get otpResending => 'Resending…';
+
+  @override
+  String otpResent(String email) {
+    return 'A new OTP code was sent to $email.';
+  }
+
+  @override
+  String get otpWrongCode => 'The OTP code is wrong or expired. Try again.';
+
+  @override
+  String get otpTooManyAttempts =>
+      'Too many code attempts. Request a new code and try again.';
+
+  @override
+  String get otpMissingDraft =>
+      'Verification session not found. Start again from the sign-up page.';
 }

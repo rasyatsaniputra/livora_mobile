@@ -2,37 +2,49 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
+import '../../features/auth/presentation/otp_verification_screen.dart';
+import '../../features/auth/presentation/register_screen.dart';
 import '../../features/catalog/presentation/catalog_screen.dart';
 import '../l10n/generated/app_localizations.dart';
 import '../presentation/placeholder_screen.dart';
 import '../presentation/splash_screen.dart';
+import 'app_routes.dart';
 
 /// Routing declarative (go_router) dengan shell untuk bottom navigation
 /// (keputusan R1 bagian 01). Alur dalam (login → checkout → bayar → e-tiket)
 /// ditambahkan per modul.
 ///
-/// Tab saat ini sengaja 3 (Katalog/Tiket/Riwayat); layar auth & payment masuk
-/// di tiket 02 dan 05.
+/// Tab saat ini sengaja 3 (Katalog/Tiket/Riwayat); layar auth masuk di
+/// tiket 03–04 dan payment di tiket 05.
 final appRouterProvider = Provider<GoRouter>((ref) {
   return GoRouter(
-    initialLocation: '/',
+    initialLocation: AppRoutes.splash,
     routes: [
       GoRoute(
-        path: '/',
+        path: AppRoutes.splash,
         builder: (context, state) => const SplashScreen(),
+      ),
+      // Alur auth di luar shell bottom-nav (tiket 03).
+      GoRoute(
+        path: AppRoutes.register,
+        builder: (context, state) => const RegisterScreen(),
+      ),
+      GoRoute(
+        path: AppRoutes.registerVerify,
+        builder: (context, state) => const OtpVerificationScreen(),
       ),
       StatefulShellRoute.indexedStack(
         builder: (context, state, shell) => _ShellScaffold(shell: shell),
         branches: [
           StatefulShellBranch(routes: [
             GoRoute(
-              path: '/catalog',
+              path: AppRoutes.catalog,
               builder: (context, state) => const CatalogScreen(),
             ),
           ]),
           StatefulShellBranch(routes: [
             GoRoute(
-              path: '/tickets',
+              path: AppRoutes.tickets,
               builder: (context, state) {
                 final l10n = AppLocalizations.of(context)!;
                 return PlaceholderScreen(title: l10n.navTickets);
@@ -41,7 +53,7 @@ final appRouterProvider = Provider<GoRouter>((ref) {
           ]),
           StatefulShellBranch(routes: [
             GoRoute(
-              path: '/history',
+              path: AppRoutes.history,
               builder: (context, state) {
                 final l10n = AppLocalizations.of(context)!;
                 return PlaceholderScreen(title: l10n.navHistory);

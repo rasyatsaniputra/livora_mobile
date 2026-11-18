@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 import '../l10n/generated/app_localizations.dart';
+import '../router/app_routes.dart';
 
 /// Splash screen dengan branding Afterglow (story 39).
 ///
@@ -25,7 +26,7 @@ class _SplashScreenState extends State<SplashScreen> {
   void initState() {
     super.initState();
     _timer = Timer(_splashDuration, () {
-      if (mounted) context.go('/catalog');
+      if (mounted) context.go(AppRoutes.catalog);
     });
   }
 

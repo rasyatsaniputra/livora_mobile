@@ -6,9 +6,9 @@
 
 **Status:** ready-for-agent
 
-- [ ] Form register dengan validasi input
-- [ ] Layar verifikasi OTP terbuka setelah register
-- [ ] Kirim ulang OTP berfungsi
-- [ ] Verifikasi sukses membawa user ke kondisi terdaftar/terverifikasi
-- [ ] Pesan error jelas untuk kode salah/kedaluwarsa dan email terdaftar
-- [ ] Test alur register sukses & gagal verifikasi lewat seam HTTP
+- [x] Form register dengan validasi input
+- [x] Layar verifikasi OTP terbuka setelah register
+- [x] Kirim ulang OTP berfungsi
+- [x] Verifikasi sukses membawa user ke kondisi terdaftar/terverifikasi
+- [x] Pesan error jelas untuk kode salah/kedaluwarsa dan email terdaftar
+- [x] Test alur register sukses & gagal verifikasi lewat seam HTTP

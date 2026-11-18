@@ -16,5 +16,40 @@
   "errorRequest": "Terjadi kesalahan. Silakan coba lagi.",
   "changeLanguage": "Ganti bahasa",
   "languageIndonesian": "Bahasa Indonesia",
-  "languageEnglish": "English"
+  "languageEnglish": "English",
+  "registerEntryTooltip": "Daftar akun baru",
+  "registerTitle": "Daftar Akun",
+  "registerSubtitle": "Buat akun Afterglow — kode verifikasi akan dikirim ke email kamu.",
+  "registerNameLabel": "Nama lengkap",
+  "registerEmailLabel": "Email",
+  "registerNameInvalid": "Nama minimal 3 karakter.",
+  "registerEmailInvalid": "Format email tidak valid.",
+  "registerSubmit": "Daftar",
+  "registerSubmitting": "Mendaftarkan…",
+  "errorEmailRegistered": "Email sudah terdaftar. Gunakan email lain.",
+  "otpTitle": "Verifikasi OTP",
+  "otpSentTo": "Masukkan 6 kode OTP yang dikirim ke {email}.",
+  "@otpSentTo": {
+    "placeholders": {
+      "email": {
+        "type": "String"
+      }
+    }
+  },
+  "otpFieldLabel": "Kode OTP",
+  "otpVerify": "Verifikasi",
+  "otpVerifying": "Memverifikasi…",
+  "otpResend": "Kirim ulang OTP",
+  "otpResending": "Mengirim ulang…",
+  "otpResent": "Kode OTP dikirim ulang ke {email}.",
+  "@otpResent": {
+    "placeholders": {
+      "email": {
+        "type": "String"
+      }
+    }
+  },
+  "otpWrongCode": "Kode OTP salah atau kedaluwarsa. Coba lagi.",
+  "otpTooManyAttempts": "Terlalu banyak percobaan kode. Minta kode baru lalu coba lagi.",
+  "otpMissingDraft": "Sesi verifikasi tidak ditemukan. Mulai lagi dari halaman daftar."
 }
