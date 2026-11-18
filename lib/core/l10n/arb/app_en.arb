@@ -16,5 +16,40 @@
   "errorRequest": "Something went wrong. Please try again.",
   "changeLanguage": "Change language",
   "languageIndonesian": "Bahasa Indonesia",
-  "languageEnglish": "English"
+  "languageEnglish": "English",
+  "registerEntryTooltip": "Create a new account",
+  "registerTitle": "Create Account",
+  "registerSubtitle": "Create your Afterglow account — a verification code will be sent to your email.",
+  "registerNameLabel": "Full name",
+  "registerEmailLabel": "Email",
+  "registerNameInvalid": "Name must be at least 3 characters.",
+  "registerEmailInvalid": "Invalid email format.",
+  "registerSubmit": "Sign up",
+  "registerSubmitting": "Signing up…",
+  "errorEmailRegistered": "This email is already registered. Use a different email.",
+  "otpTitle": "OTP Verification",
+  "otpSentTo": "Enter the 6-digit OTP code sent to {email}.",
+  "@otpSentTo": {
+    "placeholders": {
+      "email": {
+        "type": "String"
+      }
+    }
+  },
+  "otpFieldLabel": "OTP code",
+  "otpVerify": "Verify",
+  "otpVerifying": "Verifying…",
+  "otpResend": "Resend OTP",
+  "otpResending": "Resending…",
+  "otpResent": "A new OTP code was sent to {email}.",
+  "@otpResent": {
+    "placeholders": {
+      "email": {
+        "type": "String"
+      }
+    }
+  },
+  "otpWrongCode": "The OTP code is wrong or expired. Try again.",
+  "otpTooManyAttempts": "Too many code attempts. Request a new code and try again.",
+  "otpMissingDraft": "Verification session not found. Start again from the sign-up page."
 }

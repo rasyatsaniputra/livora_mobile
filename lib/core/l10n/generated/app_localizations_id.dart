@@ -62,4 +62,75 @@ class AppLocalizationsId extends AppLocalizations {
 
   @override
   String get languageEnglish => 'English';
+
+  @override
+  String get registerEntryTooltip => 'Daftar akun baru';
+
+  @override
+  String get registerTitle => 'Daftar Akun';
+
+  @override
+  String get registerSubtitle =>
+      'Buat akun Afterglow — kode verifikasi akan dikirim ke email kamu.';
+
+  @override
+  String get registerNameLabel => 'Nama lengkap';
+
+  @override
+  String get registerEmailLabel => 'Email';
+
+  @override
+  String get registerNameInvalid => 'Nama minimal 3 karakter.';
+
+  @override
+  String get registerEmailInvalid => 'Format email tidak valid.';
+
+  @override
+  String get registerSubmit => 'Daftar';
+
+  @override
+  String get registerSubmitting => 'Mendaftarkan…';
+
+  @override
+  String get errorEmailRegistered =>
+      'Email sudah terdaftar. Gunakan email lain.';
+
+  @override
+  String get otpTitle => 'Verifikasi OTP';
+
+  @override
+  String otpSentTo(String email) {
+    return 'Masukkan 6 kode OTP yang dikirim ke $email.';
+  }
+
+  @override
+  String get otpFieldLabel => 'Kode OTP';
+
+  @override
+  String get otpVerify => 'Verifikasi';
+
+  @override
+  String get otpVerifying => 'Memverifikasi…';
+
+  @override
+  String get otpResend => 'Kirim ulang OTP';
+
+  @override
+  String get otpResending => 'Mengirim ulang…';
+
+  @override
+  String otpResent(String email) {
+    return 'Kode OTP dikirim ulang ke $email.';
+  }
+
+  @override
+  String get otpWrongCode => 'Kode OTP salah atau kedaluwarsa. Coba lagi.';
+
+  @override
+  String get otpTooManyAttempts =>
+      'Terlalu banyak percobaan kode. Minta kode baru lalu coba lagi.';
+
+  @override
+  String get otpMissingDraft =>
+      'Sesi verifikasi tidak ditemukan. Mulai lagi dari halaman daftar.';
 }

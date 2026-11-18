@@ -199,6 +199,132 @@ abstract class AppLocalizations {
   /// In id, this message translates to:
   /// **'English'**
   String get languageEnglish;
+
+  /// No description provided for @registerEntryTooltip.
+  ///
+  /// In id, this message translates to:
+  /// **'Daftar akun baru'**
+  String get registerEntryTooltip;
+
+  /// No description provided for @registerTitle.
+  ///
+  /// In id, this message translates to:
+  /// **'Daftar Akun'**
+  String get registerTitle;
+
+  /// No description provided for @registerSubtitle.
+  ///
+  /// In id, this message translates to:
+  /// **'Buat akun Afterglow — kode verifikasi akan dikirim ke email kamu.'**
+  String get registerSubtitle;
+
+  /// No description provided for @registerNameLabel.
+  ///
+  /// In id, this message translates to:
+  /// **'Nama lengkap'**
+  String get registerNameLabel;
+
+  /// No description provided for @registerEmailLabel.
+  ///
+  /// In id, this message translates to:
+  /// **'Email'**
+  String get registerEmailLabel;
+
+  /// No description provided for @registerNameInvalid.
+  ///
+  /// In id, this message translates to:
+  /// **'Nama minimal 3 karakter.'**
+  String get registerNameInvalid;
+
+  /// No description provided for @registerEmailInvalid.
+  ///
+  /// In id, this message translates to:
+  /// **'Format email tidak valid.'**
+  String get registerEmailInvalid;
+
+  /// No description provided for @registerSubmit.
+  ///
+  /// In id, this message translates to:
+  /// **'Daftar'**
+  String get registerSubmit;
+
+  /// No description provided for @registerSubmitting.
+  ///
+  /// In id, this message translates to:
+  /// **'Mendaftarkan…'**
+  String get registerSubmitting;
+
+  /// No description provided for @errorEmailRegistered.
+  ///
+  /// In id, this message translates to:
+  /// **'Email sudah terdaftar. Gunakan email lain.'**
+  String get errorEmailRegistered;
+
+  /// No description provided for @otpTitle.
+  ///
+  /// In id, this message translates to:
+  /// **'Verifikasi OTP'**
+  String get otpTitle;
+
+  /// No description provided for @otpSentTo.
+  ///
+  /// In id, this message translates to:
+  /// **'Masukkan 6 kode OTP yang dikirim ke {email}.'**
+  String otpSentTo(String email);
+
+  /// No description provided for @otpFieldLabel.
+  ///
+  /// In id, this message translates to:
+  /// **'Kode OTP'**
+  String get otpFieldLabel;
+
+  /// No description provided for @otpVerify.
+  ///
+  /// In id, this message translates to:
+  /// **'Verifikasi'**
+  String get otpVerify;
+
+  /// No description provided for @otpVerifying.
+  ///
+  /// In id, this message translates to:
+  /// **'Memverifikasi…'**
+  String get otpVerifying;
+
+  /// No description provided for @otpResend.
+  ///
+  /// In id, this message translates to:
+  /// **'Kirim ulang OTP'**
+  String get otpResend;
+
+  /// No description provided for @otpResending.
+  ///
+  /// In id, this message translates to:
+  /// **'Mengirim ulang…'**
+  String get otpResending;
+
+  /// No description provided for @otpResent.
+  ///
+  /// In id, this message translates to:
+  /// **'Kode OTP dikirim ulang ke {email}.'**
+  String otpResent(String email);
+
+  /// No description provided for @otpWrongCode.
+  ///
+  /// In id, this message translates to:
+  /// **'Kode OTP salah atau kedaluwarsa. Coba lagi.'**
+  String get otpWrongCode;
+
+  /// No description provided for @otpTooManyAttempts.
+  ///
+  /// In id, this message translates to:
+  /// **'Terlalu banyak percobaan kode. Minta kode baru lalu coba lagi.'**
+  String get otpTooManyAttempts;
+
+  /// No description provided for @otpMissingDraft.
+  ///
+  /// In id, this message translates to:
+  /// **'Sesi verifikasi tidak ditemukan. Mulai lagi dari halaman daftar.'**
+  String get otpMissingDraft;
 }
 
 class _AppLocalizationsDelegate

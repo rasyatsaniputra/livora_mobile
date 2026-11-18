@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../../core/l10n/generated/app_localizations.dart';
-import '../../../../core/network/api_exception.dart';
+import '../../../../core/presentation/error_message.dart';
 import 'health_check_controller.dart';
 
 /// Smoke test fondasi (story 40 & 41): satu kartu yang memanggil endpoint
@@ -84,7 +84,7 @@ class _StatusLine extends StatelessWidget {
         ),
       HealthFailure(:final kind) => (
           Icons.error,
-          _errorText(kind, l10n),
+          apiErrorText(kind, l10n),
           theme.colorScheme.error,
         ),
     };
@@ -101,12 +101,4 @@ class _StatusLine extends StatelessWidget {
       ],
     );
   }
-
-  String _errorText(ApiExceptionKind kind, AppLocalizations l10n) =>
-      switch (kind) {
-        ApiExceptionKind.network => l10n.errorNetwork,
-        ApiExceptionKind.timeout => l10n.errorTimeout,
-        ApiExceptionKind.server => l10n.errorServer,
-        ApiExceptionKind.request => l10n.errorRequest,
-      };
 }
