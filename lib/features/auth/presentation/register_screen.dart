@@ -4,6 +4,7 @@ import 'package:go_router/go_router.dart';
 
 import '../../../core/l10n/generated/app_localizations.dart';
 import '../../../core/presentation/error_message.dart';
+import '../../../core/presentation/validators.dart';
 import '../../../core/router/app_routes.dart';
 import '../data/auth_repository.dart';
 import 'register_controller.dart';
@@ -22,8 +23,6 @@ class _RegisterScreenState extends ConsumerState<RegisterScreen> {
   final _formKey = GlobalKey<FormState>();
   final _name = TextEditingController();
   final _email = TextEditingController();
-
-  static final _emailPattern = RegExp(r'^[^@\s]+@[^@\s]+\.[^@\s]+$');
 
   @override
   void initState() {
@@ -51,23 +50,15 @@ class _RegisterScreenState extends ConsumerState<RegisterScreen> {
     return null;
   }
 
-  String? _validateEmail(String? value) {
-    final email = value?.trim() ?? '';
-    if (email.isEmpty || !_emailPattern.hasMatch(email)) {
-      return AppLocalizations.of(context)!.registerEmailInvalid;
-    }
-    return null;
-  }
-
   /// Data pendaftaran dari isian form.
-  RegisterDraft get _draft => (
+  RegistrationOtpChallenge get _challenge => RegistrationOtpChallenge(
         email: _email.text.trim(),
         username: _name.text.trim(),
       );
 
   void _submit() {
     if (!_formKey.currentState!.validate()) return;
-    ref.read(registerControllerProvider.notifier).submit(_draft);
+    ref.read(registerControllerProvider.notifier).submit(_challenge);
   }
 
   @override
@@ -81,7 +72,7 @@ class _RegisterScreenState extends ConsumerState<RegisterScreen> {
     // user masih bisa kembali memperbaiki email bila perlu).
     ref.listen<RegisterState>(registerControllerProvider, (previous, next) {
       if (next is RegisterSubmitted) {
-        context.push(AppRoutes.registerVerify, extra: _draft);
+        context.push(AppRoutes.registerVerify, extra: _challenge);
       }
     });
 
@@ -119,7 +110,8 @@ class _RegisterScreenState extends ConsumerState<RegisterScreen> {
                   labelText: l10n.registerEmailLabel,
                   border: const OutlineInputBorder(),
                 ),
-                validator: _validateEmail,
+                validator: (value) =>
+                    validateEmail(value, l10n.registerEmailInvalid),
               ),
               const SizedBox(height: 16),
               FilledButton(

@@ -1,5 +1,6 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../../../core/auth/session_controller.dart';
 import '../../../core/network/api_exception.dart';
 import '../data/auth_repository.dart';
 
@@ -25,7 +26,7 @@ final class OtpResent extends OtpState {
   const OtpResent();
 }
 
-/// Verifikasi sukses — token sesi sudah tersimpan (terdaftar & terverifikasi).
+/// Verifikasi sukses — token sesi sudah tersimpan dan sesi aplikasi aktif.
 final class OtpVerified extends OtpState {
   const OtpVerified();
 }
@@ -67,16 +68,17 @@ class OtpVerificationController extends Notifier<OtpState> {
   void reset() => state = const OtpIdle();
 
   /// Memverifikasi kode OTP; sukses menyimpan token sesi lewat repository
-  /// sehingga user berada dalam kondisi terdaftar & terverifikasi.
+  /// lalu menandai sesi aplikasi aktif (login/registrasi selesai).
   Future<void> verify({
-    required RegisterDraft draft,
+    required OtpChallenge challenge,
     required String otp,
   }) async {
     state = const OtpVerifying();
     try {
       await ref
           .read(authRepositoryProvider)
-          .verifyRegistration(draft, otp: otp);
+          .verifyOtp(challenge, otp: otp);
+      await ref.read(sessionControllerProvider.notifier).markSignedIn();
       state = const OtpVerified();
     } on ApiException catch (e) {
       state = OtpFailed(_verifyFailureFor(e));
@@ -89,11 +91,11 @@ class OtpVerificationController extends Notifier<OtpState> {
   }
 
   /// Meminta ulang kode OTP ke email yang sama (story 5) — endpoint sama
-  /// dengan permintaan awal di form register.
-  Future<void> resend({required RegisterDraft draft}) async {
+  /// dengan permintaan awal di form register maupun login.
+  Future<void> resend({required OtpChallenge challenge}) async {
     state = const OtpResending();
     try {
-      await ref.read(authRepositoryProvider).requestRegistrationOtp(draft);
+      await ref.read(authRepositoryProvider).requestOtp(challenge);
       state = const OtpResent();
     } on ApiException catch (e) {
       // Tidak ada kode yang dinilai di sini — jangan pernah memakai pesan

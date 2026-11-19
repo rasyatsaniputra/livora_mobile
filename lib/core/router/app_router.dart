@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
+import '../../features/auth/presentation/login_screen.dart';
 import '../../features/auth/presentation/otp_verification_screen.dart';
 import '../../features/auth/presentation/register_screen.dart';
 import '../../features/catalog/presentation/catalog_screen.dart';
@@ -24,7 +25,17 @@ final appRouterProvider = Provider<GoRouter>((ref) {
         path: AppRoutes.splash,
         builder: (context, state) => const SplashScreen(),
       ),
-      // Alur auth di luar shell bottom-nav (tiket 03).
+      // Alur auth di luar shell bottom-nav (tiket 03–04). Login dan
+      // registrasi berbagi layar verifikasi OTP; alurnya dibedakan oleh
+      // OtpChallenge yang dibawa sebagai `extra`.
+      GoRoute(
+        path: AppRoutes.login,
+        builder: (context, state) => const LoginScreen(),
+      ),
+      GoRoute(
+        path: AppRoutes.loginVerify,
+        builder: (context, state) => const OtpVerificationScreen(),
+      ),
       GoRoute(
         path: AppRoutes.register,
         builder: (context, state) => const RegisterScreen(),

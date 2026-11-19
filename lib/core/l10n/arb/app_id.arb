@@ -17,7 +17,14 @@
   "changeLanguage": "Ganti bahasa",
   "languageIndonesian": "Bahasa Indonesia",
   "languageEnglish": "English",
-  "registerEntryTooltip": "Daftar akun baru",
+  "loginTitle": "Masuk",
+  "loginSubtitle": "Masuk dengan email — kode verifikasi akan dikirim ke email kamu.",
+  "loginEmailLabel": "Email",
+  "loginEmailInvalid": "Format email tidak valid.",
+  "loginSubmit": "Masuk",
+  "loginSubmitting": "Mengirim kode…",
+  "loginRegisterPrompt": "Belum punya akun?",
+  "loginRegisterAction": "Daftar",
   "registerTitle": "Daftar Akun",
   "registerSubtitle": "Buat akun Afterglow — kode verifikasi akan dikirim ke email kamu.",
   "registerNameLabel": "Nama lengkap",
@@ -51,5 +58,5 @@
   },
   "otpWrongCode": "Kode OTP salah atau kedaluwarsa. Coba lagi.",
   "otpTooManyAttempts": "Terlalu banyak percobaan kode. Minta kode baru lalu coba lagi.",
-  "otpMissingDraft": "Sesi verifikasi tidak ditemukan. Mulai lagi dari halaman daftar."
+  "otpMissingDraft": "Sesi verifikasi tidak ditemukan. Ulangi dari halaman masuk atau daftar."
 }

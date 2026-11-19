@@ -64,7 +64,29 @@ class AppLocalizationsId extends AppLocalizations {
   String get languageEnglish => 'English';
 
   @override
-  String get registerEntryTooltip => 'Daftar akun baru';
+  String get loginTitle => 'Masuk';
+
+  @override
+  String get loginSubtitle =>
+      'Masuk dengan email — kode verifikasi akan dikirim ke email kamu.';
+
+  @override
+  String get loginEmailLabel => 'Email';
+
+  @override
+  String get loginEmailInvalid => 'Format email tidak valid.';
+
+  @override
+  String get loginSubmit => 'Masuk';
+
+  @override
+  String get loginSubmitting => 'Mengirim kode…';
+
+  @override
+  String get loginRegisterPrompt => 'Belum punya akun?';
+
+  @override
+  String get loginRegisterAction => 'Daftar';
 
   @override
   String get registerTitle => 'Daftar Akun';
@@ -132,5 +154,5 @@ class AppLocalizationsId extends AppLocalizations {
 
   @override
   String get otpMissingDraft =>
-      'Sesi verifikasi tidak ditemukan. Mulai lagi dari halaman daftar.';
+      'Sesi verifikasi tidak ditemukan. Ulangi dari halaman masuk atau daftar.';
 }
