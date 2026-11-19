@@ -6,13 +6,35 @@ import '../../../core/network/api_exception.dart';
 import '../../../core/network/providers.dart';
 import 'auth_tokens.dart';
 
-/// Data pendaftaran passwordless: email + nama lengkap. Dikemas sebagai satu
-/// tipe karena selalu berjalan bersama (form → minta OTP → verifikasi OTP).
-typedef RegisterDraft = ({String email, String username});
+/// Sesi OTP yang sedang berjalan. Dua alur memakai endpoint yang sama:
+/// registrasi mengirim nama lengkap, login pengguna lama cukup email
+/// (API Soundtix passwordless — lihat `docs/soundtix-api-*.json`).
+sealed class OtpChallenge {
+  const OtpChallenge({required this.email});
 
-/// Kontrak data modul auth (tiket 03): pendaftaran passwordless via OTP,
-/// sesuai kontrak Soundtix (`POST /auth/request-otp` & `POST /auth/verify-otp`
-/// — API tidak memiliki field password, lihat docs/soundtix-api-*.json).
+  /// Email penerima kode sekaligus identitas sesi yang diverifikasi.
+  final String email;
+}
+
+/// Pendaftaran akun baru: email + nama lengkap.
+final class RegistrationOtpChallenge extends OtpChallenge {
+  const RegistrationOtpChallenge({
+    required super.email,
+    required this.username,
+  });
+
+  final String username;
+}
+
+/// Login pengguna yang sudah terdaftar: cukup email.
+final class LoginOtpChallenge extends OtpChallenge {
+  const LoginOtpChallenge({required super.email});
+}
+
+/// Kontrak data modul auth (tiket 03–04): permintaan & verifikasi OTP untuk
+/// registrasi maupun login, sesuai kontrak Soundtix
+/// (`POST /auth/request-otp` & `POST /auth/verify-otp` — API tidak memiliki
+/// field password, lihat docs/soundtix-api-*.json).
 ///
 /// Semua request lewat [ApiClient] (satu-satunya seam HTTP) sehingga test
 /// cukup menukar adapternya dengan respons contoh. Error dilempar sebagai
@@ -23,28 +45,28 @@ class AuthRepository {
   final ApiClient client;
   final TokenStore tokenStore;
 
-  /// Meminta OTP pendaftaran: akun baru dibuat di backend dan kode OTP
-  /// dikirim ke email. Body respons tidak dipakai — 200 berarti terkirim.
+  /// Meminta OTP untuk [challenge]: registrasi mengirim email + nama,
+  /// login hanya email. 200 berarti kode terkirim.
   ///
-  /// Dipakai dua kali dalam alur: saat submit form register dan saat
-  /// "kirim ulang OTP" di layar verifikasi.
-  Future<void> requestRegistrationOtp(RegisterDraft draft) async {
+  /// Dipakai tiga kali dalam alur: submit form register, submit form login,
+  /// dan "kirim ulang OTP" di layar verifikasi.
+  Future<void> requestOtp(OtpChallenge challenge) async {
     await client.post<dynamic>(
       '/auth/request-otp',
-      body: {'email': draft.email, 'username': draft.username},
+      body: _requestBody(challenge),
     );
   }
 
-  /// Verifikasi OTP pendaftaran. Respons memuat [AuthTokens] (access &
-  /// refresh — lihat panduan autentikasi di OpenAPI) yang langsung disimpan
-  /// ke [TokenStore] — user berada dalam kondisi terdaftar & terverifikasi.
-  Future<void> verifyRegistration(
-    RegisterDraft draft, {
+  /// Verifikasi OTP. Respons memuat [AuthTokens] (access & refresh — lihat
+  /// panduan autentikasi di OpenAPI) yang langsung disimpan ke [TokenStore],
+  /// sehingga user berada dalam kondisi login dengan sesi aktif.
+  Future<void> verifyOtp(
+    OtpChallenge challenge, {
     required String otp,
   }) async {
     final Object? data = await client.post<Object?>(
       '/auth/verify-otp',
-      body: {'email': draft.email, 'otp': otp, 'username': draft.username},
+      body: {..._requestBody(challenge), 'otp': otp},
     );
     if (data is! Map<String, Object?>) {
       // Respons 200 tanpa objek JSON berarti backend menyimpang dari
@@ -64,6 +86,16 @@ class AuthRepository {
       refreshToken: tokens.refreshToken,
     );
   }
+
+  /// Body permintaan OTP per alur — nama hanya untuk pendaftaran.
+  Map<String, Object?> _requestBody(OtpChallenge challenge) =>
+      switch (challenge) {
+        RegistrationOtpChallenge(:final email, :final username) => {
+          'email': email,
+          'username': username,
+        },
+        LoginOtpChallenge(:final email) => {'email': email},
+      };
 }
 
 /// Satu repository auth untuk seluruh aplikasi. Test modul auth tidak

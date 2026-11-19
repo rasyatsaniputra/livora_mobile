@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:livora_mobile/core/auth/token_store.dart';
 import 'package:livora_mobile/core/router/app_router.dart';
+import 'package:livora_mobile/features/auth/data/auth_repository.dart';
 
 import '../../support/fake_http_adapter.dart';
 import '../../support/memory_token_store.dart';
@@ -80,21 +81,6 @@ void main() {
     });
   });
 
-  group('Pintu masuk sementara (belum ada layar login sampai tiket 04)', () {
-    testWidgets('tombol Daftar di Katalog membuka form register',
-        (tester) async {
-      final adapter = FakeHttpAdapter(200, {});
-
-      await pumpAfterglowApp(tester, adapter: adapter, location: '/catalog');
-
-      await tester.tap(find.byTooltip('Daftar akun baru'));
-      await tester.pumpAndSettle();
-
-      expect(find.text('Daftar Akun'), findsOneWidget);
-      expect(find.widgetWithText(FilledButton, 'Daftar'), findsOneWidget);
-    });
-  });
-
   group('Layar verifikasi OTP (/register/verify)', () {    testWidgets('verifikasi sukses: token tersimpan dan sampai ke Katalog',
         (tester) async {
       final adapter = FakeHttpAdapter(200, {
@@ -108,7 +94,10 @@ void main() {
         adapter: adapter,
         tokenStore: store,
         location: '/register/verify',
-        extra: (email: 'baru@soundtix.id', username: 'Budi Santoso'),
+        extra: const RegistrationOtpChallenge(
+          email: 'baru@soundtix.id',
+          username: 'Budi Santoso',
+        ),
       );
 
       await tester.enterText(find.byType(TextField), '123456');
@@ -147,7 +136,10 @@ void main() {
         adapter: adapter,
         tokenStore: store,
         location: '/register/verify',
-        extra: (email: 'baru@soundtix.id', username: 'Budi Santoso'),
+        extra: const RegistrationOtpChallenge(
+          email: 'baru@soundtix.id',
+          username: 'Budi Santoso',
+        ),
       );
 
       await tester.enterText(find.byType(TextField), '000000');
@@ -173,7 +165,10 @@ void main() {
         tester,
         adapter: adapter,
         location: '/register/verify',
-        extra: (email: 'baru@soundtix.id', username: 'Budi Santoso'),
+        extra: const RegistrationOtpChallenge(
+          email: 'baru@soundtix.id',
+          username: 'Budi Santoso',
+        ),
       );
 
       await tester.tap(find.text('Kirim ulang OTP'));
@@ -203,7 +198,10 @@ void main() {
         tester,
         adapter: adapter,
         location: '/register/verify',
-        extra: (email: 'baru@soundtix.id', username: 'Budi Santoso'),
+        extra: const RegistrationOtpChallenge(
+          email: 'baru@soundtix.id',
+          username: 'Budi Santoso',
+        ),
       );
 
       await tester.tap(find.text('Kirim ulang OTP'));
@@ -224,7 +222,10 @@ void main() {
         tester,
         adapter: adapter,
         location: '/register/verify',
-        extra: (email: 'baru@soundtix.id', username: 'Budi Santoso'),
+        extra: const RegistrationOtpChallenge(
+          email: 'baru@soundtix.id',
+          username: 'Budi Santoso',
+        ),
       );
 
       // Percobaan pertama gagal → pesan tampil.
@@ -243,7 +244,10 @@ void main() {
       await tester.pumpAndSettle();
       router.go(
         '/register/verify',
-        extra: (email: 'baru@soundtix.id', username: 'Budi Santoso'),
+        extra: const RegistrationOtpChallenge(
+          email: 'baru@soundtix.id',
+          username: 'Budi Santoso',
+        ),
       );
       await tester.pumpAndSettle();
 
@@ -266,7 +270,10 @@ void main() {
         adapter: adapter,
         tokenStore: _ThrowingTokenStore(),
         location: '/register/verify',
-        extra: (email: 'baru@soundtix.id', username: 'Budi Santoso'),
+        extra: const RegistrationOtpChallenge(
+          email: 'baru@soundtix.id',
+          username: 'Budi Santoso',
+        ),
       );
 
       await tester.enterText(find.byType(TextField), '123456');

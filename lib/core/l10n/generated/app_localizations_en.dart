@@ -64,7 +64,29 @@ class AppLocalizationsEn extends AppLocalizations {
   String get languageEnglish => 'English';
 
   @override
-  String get registerEntryTooltip => 'Create a new account';
+  String get loginTitle => 'Sign In';
+
+  @override
+  String get loginSubtitle =>
+      'Sign in with your email — a verification code will be sent to your inbox.';
+
+  @override
+  String get loginEmailLabel => 'Email';
+
+  @override
+  String get loginEmailInvalid => 'Invalid email format.';
+
+  @override
+  String get loginSubmit => 'Sign in';
+
+  @override
+  String get loginSubmitting => 'Sending code…';
+
+  @override
+  String get loginRegisterPrompt => 'Don\'t have an account?';
+
+  @override
+  String get loginRegisterAction => 'Sign up';
 
   @override
   String get registerTitle => 'Create Account';
@@ -132,5 +154,5 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get otpMissingDraft =>
-      'Verification session not found. Start again from the sign-up page.';
+      'Verification session not found. Start again from the sign-in or sign-up page.';
 }

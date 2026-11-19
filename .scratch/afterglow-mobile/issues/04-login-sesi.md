@@ -6,9 +6,9 @@
 
 **Status:** ready-for-agent
 
-- [ ] Login + verifikasi OTP berfungsi end-to-end
-- [ ] Sesi persist: restart app tetap login
-- [ ] Token refresh otomatis saat kedaluwarsa tanpa interupsi user
-- [ ] Redirect pembuka: sesi aktif → home; tanpa sesi → login
-- [ ] Logout belum ada di tiket ini (tiket 05)
-- [ ] Test alur login (sukses, OTP salah, sesi persist) lewat seam HTTP
+- [x] Login + verifikasi OTP berfungsi end-to-end
+- [x] Sesi persist: restart app tetap login
+- [x] Token refresh otomatis saat kedaluwarsa tanpa interupsi user
+- [x] Redirect pembuka: sesi aktif → home; tanpa sesi → login
+- [x] Logout belum ada di tiket ini (tiket 05)
+- [x] Test alur login (sukses, OTP salah, sesi persist) lewat seam HTTP

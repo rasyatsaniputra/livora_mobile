@@ -17,7 +17,14 @@
   "changeLanguage": "Change language",
   "languageIndonesian": "Bahasa Indonesia",
   "languageEnglish": "English",
-  "registerEntryTooltip": "Create a new account",
+  "loginTitle": "Sign In",
+  "loginSubtitle": "Sign in with your email — a verification code will be sent to your inbox.",
+  "loginEmailLabel": "Email",
+  "loginEmailInvalid": "Invalid email format.",
+  "loginSubmit": "Sign in",
+  "loginSubmitting": "Sending code…",
+  "loginRegisterPrompt": "Don't have an account?",
+  "loginRegisterAction": "Sign up",
   "registerTitle": "Create Account",
   "registerSubtitle": "Create your Afterglow account — a verification code will be sent to your email.",
   "registerNameLabel": "Full name",
@@ -51,5 +58,5 @@
   },
   "otpWrongCode": "The OTP code is wrong or expired. Try again.",
   "otpTooManyAttempts": "Too many code attempts. Request a new code and try again.",
-  "otpMissingDraft": "Verification session not found. Start again from the sign-up page."
+  "otpMissingDraft": "Verification session not found. Start again from the sign-in or sign-up page."
 }

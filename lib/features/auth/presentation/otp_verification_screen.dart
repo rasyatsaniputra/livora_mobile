@@ -9,8 +9,10 @@ import '../../../core/router/app_routes.dart';
 import '../data/auth_repository.dart';
 import 'otp_verification_controller.dart';
 
-/// Layar verifikasi OTP pendaftaran (story 2): user memasukkan kode 6 digit
-/// yang dikirim ke email saat register. Kirim ulang OTP tersedia (story 5).
+/// Layar verifikasi OTP bersama untuk registrasi (tiket 03) dan login
+/// (tiket 04): user memasukkan kode 6 digit yang dikirim ke email. Alur
+/// dibedakan lewat [OtpChallenge] yang dibawa sebagai argumen route.
+/// Kirim ulang OTP tersedia (story 5).
 class OtpVerificationScreen extends ConsumerStatefulWidget {
   const OtpVerificationScreen({super.key});
 
@@ -46,9 +48,9 @@ class _OtpVerificationScreenState extends ConsumerState<OtpVerificationScreen> {
     final theme = Theme.of(context);
     final args = GoRouterState.of(context).extra;
 
-    // Route ini hanya sah bila dibuka dari alur register (draft terbawa).
-    // Masuk langsung lewat URL menampilkan pesan jelas, bukan crash.
-    if (args is! RegisterDraft) {
+    // Route ini hanya sah bila dibuka dari alur register/login (challenge
+    // terbawa). Masuk langsung lewat URL menampilkan pesan jelas, bukan crash.
+    if (args is! OtpChallenge) {
       return Scaffold(
         appBar: AppBar(title: Text(l10n.otpTitle)),
         body: Center(
@@ -117,7 +119,7 @@ class _OtpVerificationScreenState extends ConsumerState<OtpVerificationScreen> {
                   ? null
                   : () => ref
                       .read(otpVerificationControllerProvider.notifier)
-                      .verify(draft: args, otp: _otp.text),
+                      .verify(challenge: args, otp: _otp.text),
               child: Text(busy ? l10n.otpVerifying : l10n.otpVerify),
             ),
             const SizedBox(height: 8),
@@ -126,7 +128,7 @@ class _OtpVerificationScreenState extends ConsumerState<OtpVerificationScreen> {
                   ? null
                   : () => ref
                       .read(otpVerificationControllerProvider.notifier)
-                      .resend(draft: args),
+                      .resend(challenge: args),
               child: Text(
                 state is OtpResending ? l10n.otpResending : l10n.otpResend,
               ),

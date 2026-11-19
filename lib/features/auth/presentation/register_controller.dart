@@ -54,10 +54,10 @@ class RegisterController extends Notifier<RegisterState> {
 
   /// Mengirim permintaan pendaftaran: backend membuat akun baru dan
   /// mengirimkan OTP ke email.
-  Future<void> submit(RegisterDraft draft) async {
+  Future<void> submit(RegistrationOtpChallenge challenge) async {
     state = const RegisterSubmitting();
     try {
-      await ref.read(authRepositoryProvider).requestRegistrationOtp(draft);
+      await ref.read(authRepositoryProvider).requestOtp(challenge);
       state = const RegisterSubmitted();
     } on ApiException catch (e) {
       // Backend tidak mendokumentasikan status khusus "email terdaftar";

@@ -200,11 +200,53 @@ abstract class AppLocalizations {
   /// **'English'**
   String get languageEnglish;
 
-  /// No description provided for @registerEntryTooltip.
+  /// No description provided for @loginTitle.
   ///
   /// In id, this message translates to:
-  /// **'Daftar akun baru'**
-  String get registerEntryTooltip;
+  /// **'Masuk'**
+  String get loginTitle;
+
+  /// No description provided for @loginSubtitle.
+  ///
+  /// In id, this message translates to:
+  /// **'Masuk dengan email — kode verifikasi akan dikirim ke email kamu.'**
+  String get loginSubtitle;
+
+  /// No description provided for @loginEmailLabel.
+  ///
+  /// In id, this message translates to:
+  /// **'Email'**
+  String get loginEmailLabel;
+
+  /// No description provided for @loginEmailInvalid.
+  ///
+  /// In id, this message translates to:
+  /// **'Format email tidak valid.'**
+  String get loginEmailInvalid;
+
+  /// No description provided for @loginSubmit.
+  ///
+  /// In id, this message translates to:
+  /// **'Masuk'**
+  String get loginSubmit;
+
+  /// No description provided for @loginSubmitting.
+  ///
+  /// In id, this message translates to:
+  /// **'Mengirim kode…'**
+  String get loginSubmitting;
+
+  /// No description provided for @loginRegisterPrompt.
+  ///
+  /// In id, this message translates to:
+  /// **'Belum punya akun?'**
+  String get loginRegisterPrompt;
+
+  /// No description provided for @loginRegisterAction.
+  ///
+  /// In id, this message translates to:
+  /// **'Daftar'**
+  String get loginRegisterAction;
 
   /// No description provided for @registerTitle.
   ///
@@ -323,7 +365,7 @@ abstract class AppLocalizations {
   /// No description provided for @otpMissingDraft.
   ///
   /// In id, this message translates to:
-  /// **'Sesi verifikasi tidak ditemukan. Mulai lagi dari halaman daftar.'**
+  /// **'Sesi verifikasi tidak ditemukan. Ulangi dari halaman masuk atau daftar.'**
   String get otpMissingDraft;
 }
 

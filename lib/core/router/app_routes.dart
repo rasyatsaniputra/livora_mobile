@@ -6,7 +6,9 @@ abstract final class AppRoutes {
   static const tickets = '/tickets';
   static const history = '/history';
 
-  /// Alur auth (tiket 03), di luar shell bottom-nav.
+  /// Alur auth (tiket 03–04), di luar shell bottom-nav.
+  static const login = '/login';
+  static const loginVerify = '/login/verify';
   static const register = '/register';
   static const registerVerify = '/register/verify';
 }
