@@ -122,6 +122,12 @@ abstract class AppLocalizations {
   /// **'Riwayat'**
   String get navHistory;
 
+  /// No description provided for @navProfile.
+  ///
+  /// In id, this message translates to:
+  /// **'Profil'**
+  String get navProfile;
+
   /// No description provided for @placeholderComingSoon.
   ///
   /// In id, this message translates to:
@@ -367,6 +373,96 @@ abstract class AppLocalizations {
   /// In id, this message translates to:
   /// **'Sesi verifikasi tidak ditemukan. Ulangi dari halaman masuk atau daftar.'**
   String get otpMissingDraft;
+
+  /// No description provided for @profileNameLabel.
+  ///
+  /// In id, this message translates to:
+  /// **'Nama lengkap'**
+  String get profileNameLabel;
+
+  /// No description provided for @profileEmailLabel.
+  ///
+  /// In id, this message translates to:
+  /// **'Email'**
+  String get profileEmailLabel;
+
+  /// No description provided for @profilePhoneLabel.
+  ///
+  /// In id, this message translates to:
+  /// **'Nomor HP'**
+  String get profilePhoneLabel;
+
+  /// No description provided for @profilePhoneEmpty.
+  ///
+  /// In id, this message translates to:
+  /// **'Belum diisi'**
+  String get profilePhoneEmpty;
+
+  /// No description provided for @profileNameInvalid.
+  ///
+  /// In id, this message translates to:
+  /// **'Nama minimal 3 karakter.'**
+  String get profileNameInvalid;
+
+  /// No description provided for @profileNameTooLong.
+  ///
+  /// In id, this message translates to:
+  /// **'Nama maksimal 50 karakter.'**
+  String get profileNameTooLong;
+
+  /// No description provided for @profilePhoneInvalid.
+  ///
+  /// In id, this message translates to:
+  /// **'Nomor HP 9–16 digit, boleh diawali +.'**
+  String get profilePhoneInvalid;
+
+  /// No description provided for @profileEdit.
+  ///
+  /// In id, this message translates to:
+  /// **'Edit profil'**
+  String get profileEdit;
+
+  /// No description provided for @profileSave.
+  ///
+  /// In id, this message translates to:
+  /// **'Simpan'**
+  String get profileSave;
+
+  /// No description provided for @profileSaving.
+  ///
+  /// In id, this message translates to:
+  /// **'Menyimpan…'**
+  String get profileSaving;
+
+  /// No description provided for @profileCancel.
+  ///
+  /// In id, this message translates to:
+  /// **'Batal'**
+  String get profileCancel;
+
+  /// No description provided for @profileSaved.
+  ///
+  /// In id, this message translates to:
+  /// **'Profil tersimpan.'**
+  String get profileSaved;
+
+  /// No description provided for @profileRetry.
+  ///
+  /// In id, this message translates to:
+  /// **'Coba lagi'**
+  String get profileRetry;
+
+  /// No description provided for @profileLogout.
+  ///
+  /// In id, this message translates to:
+  /// **'Keluar'**
+  String get profileLogout;
+
+  /// No description provided for @profileLoggingOut.
+  ///
+  /// In id, this message translates to:
+  /// **'Keluar…'**
+  String get profileLoggingOut;
 }
 
 class _AppLocalizationsDelegate

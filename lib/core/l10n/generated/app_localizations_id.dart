@@ -22,6 +22,9 @@ class AppLocalizationsId extends AppLocalizations {
   String get navHistory => 'Riwayat';
 
   @override
+  String get navProfile => 'Profil';
+
+  @override
   String get placeholderComingSoon =>
       'Modul ini akan hadir setelah fondasi dan modul sebelumnya selesai.';
 
@@ -155,4 +158,49 @@ class AppLocalizationsId extends AppLocalizations {
   @override
   String get otpMissingDraft =>
       'Sesi verifikasi tidak ditemukan. Ulangi dari halaman masuk atau daftar.';
+
+  @override
+  String get profileNameLabel => 'Nama lengkap';
+
+  @override
+  String get profileEmailLabel => 'Email';
+
+  @override
+  String get profilePhoneLabel => 'Nomor HP';
+
+  @override
+  String get profilePhoneEmpty => 'Belum diisi';
+
+  @override
+  String get profileNameInvalid => 'Nama minimal 3 karakter.';
+
+  @override
+  String get profileNameTooLong => 'Nama maksimal 50 karakter.';
+
+  @override
+  String get profilePhoneInvalid => 'Nomor HP 9–16 digit, boleh diawali +.';
+
+  @override
+  String get profileEdit => 'Edit profil';
+
+  @override
+  String get profileSave => 'Simpan';
+
+  @override
+  String get profileSaving => 'Menyimpan…';
+
+  @override
+  String get profileCancel => 'Batal';
+
+  @override
+  String get profileSaved => 'Profil tersimpan.';
+
+  @override
+  String get profileRetry => 'Coba lagi';
+
+  @override
+  String get profileLogout => 'Keluar';
+
+  @override
+  String get profileLoggingOut => 'Keluar…';
 }
