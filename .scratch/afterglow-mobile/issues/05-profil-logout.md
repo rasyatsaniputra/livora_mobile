@@ -4,9 +4,9 @@
 
 **Blocked by:** 04 (Login + OTP + sesi persist + auto-refresh).
 
-**Status:** ready-for-agent
+**Status:** done
 
-- [ ] Data profil tampil dari endpoint profil
-- [ ] Edit profil tersimpan ke server dan tampil setelah refresh
-- [ ] Logout membersihkan sesi dan kembali ke layar login
-- [ ] Test lihat/edit profil & logout lewat seam HTTP
+- [x] Data profil tampil dari endpoint profil
+- [x] Edit profil tersimpan ke server dan tampil setelah refresh
+- [x] Logout membersihkan sesi dan kembali ke layar login
+- [x] Test lihat/edit profil & logout lewat seam HTTP

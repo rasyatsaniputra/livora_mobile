@@ -4,6 +4,7 @@ import 'package:go_router/go_router.dart';
 
 import '../../features/auth/presentation/login_screen.dart';
 import '../../features/auth/presentation/otp_verification_screen.dart';
+import '../../features/auth/presentation/profile_screen.dart';
 import '../../features/auth/presentation/register_screen.dart';
 import '../../features/catalog/presentation/catalog_screen.dart';
 import '../l10n/generated/app_localizations.dart';
@@ -15,8 +16,8 @@ import 'app_routes.dart';
 /// (keputusan R1 bagian 01). Alur dalam (login → checkout → bayar → e-tiket)
 /// ditambahkan per modul.
 ///
-/// Tab saat ini sengaja 3 (Katalog/Tiket/Riwayat); layar auth masuk di
-/// tiket 03–04 dan payment di tiket 05.
+/// Tab saat ini 4 (Katalog/Tiket/Riwayat/Profil); layar auth masuk di
+/// tiket 03–05.
 final appRouterProvider = Provider<GoRouter>((ref) {
   return GoRouter(
     initialLocation: AppRoutes.splash,
@@ -71,6 +72,12 @@ final appRouterProvider = Provider<GoRouter>((ref) {
               },
             ),
           ]),
+          StatefulShellBranch(routes: [
+            GoRoute(
+              path: AppRoutes.profile,
+              builder: (context, state) => const ProfileScreen(),
+            ),
+          ]),
         ],
       ),
     ],
@@ -105,6 +112,11 @@ class _ShellScaffold extends StatelessWidget {
             icon: const Icon(Icons.history_outlined),
             selectedIcon: const Icon(Icons.history),
             label: l10n.navHistory,
+          ),
+          NavigationDestination(
+            icon: const Icon(Icons.person_outline),
+            selectedIcon: const Icon(Icons.person),
+            label: l10n.navProfile,
           ),
         ],
         onDestinationSelected: (index) => shell.goBranch(

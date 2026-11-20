@@ -87,6 +87,33 @@ class AuthRepository {
     );
   }
 
+  /// Logout (tiket 05): cabut refresh token di server lalu hapus token
+  /// lokal. Kegagalan server/token store tidak boleh menahan user dalam
+  /// kondisi login — sesi lokal tetap dibersihkan (best-effort), karena
+  /// tombol keluar harus selalu berhasil dari sudut pandang user.
+  Future<void> logout() async {
+    try {
+      final refreshToken = await tokenStore.readRefreshToken();
+      if (refreshToken != null) {
+        await client.post<dynamic>(
+          '/auth/logout',
+          body: {'refresh_token': refreshToken},
+        );
+      }
+    } on Object {
+      // Jaringan mati, 401, atau storage gagal dibaca: tetap lanjut
+      // membersihkan sesi lokal di bawah.
+    } finally {
+      try {
+        await tokenStore.clear();
+      } on Object {
+        // Storage gagal menghapus bukan alasan menggantung tombol keluar;
+        // sesi aplikasi tetap diakhiri (paling buruk token tersisa dan
+        // dibersihkan pada percobaan logout berikutnya).
+      }
+    }
+  }
+
   /// Body permintaan OTP per alur — nama hanya untuk pendaftaran.
   Map<String, Object?> _requestBody(OtpChallenge challenge) =>
       switch (challenge) {

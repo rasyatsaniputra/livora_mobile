@@ -22,6 +22,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get navHistory => 'History';
 
   @override
+  String get navProfile => 'Profile';
+
+  @override
   String get placeholderComingSoon =>
       'This module will arrive after the foundation and previous modules are done.';
 
@@ -155,4 +158,50 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get otpMissingDraft =>
       'Verification session not found. Start again from the sign-in or sign-up page.';
+
+  @override
+  String get profileNameLabel => 'Full name';
+
+  @override
+  String get profileEmailLabel => 'Email';
+
+  @override
+  String get profilePhoneLabel => 'Phone number';
+
+  @override
+  String get profilePhoneEmpty => 'Not set';
+
+  @override
+  String get profileNameInvalid => 'Name must be at least 3 characters.';
+
+  @override
+  String get profileNameTooLong => 'Name must be at most 50 characters.';
+
+  @override
+  String get profilePhoneInvalid =>
+      'Phone number must be 9–16 digits and may start with +.';
+
+  @override
+  String get profileEdit => 'Edit profile';
+
+  @override
+  String get profileSave => 'Save';
+
+  @override
+  String get profileSaving => 'Saving…';
+
+  @override
+  String get profileCancel => 'Cancel';
+
+  @override
+  String get profileSaved => 'Profile saved.';
+
+  @override
+  String get profileRetry => 'Try again';
+
+  @override
+  String get profileLogout => 'Sign out';
+
+  @override
+  String get profileLoggingOut => 'Signing out…';
 }

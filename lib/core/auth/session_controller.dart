@@ -45,6 +45,13 @@ class SessionController extends AsyncNotifier<bool> {
     if (!ref.mounted) return;
     state = const AsyncData(true);
   }
+
+  /// Dipanggil setelah logout: token sudah dihapus, aplikasi kembali ke
+  /// kondisi belum login (splash berikutnya membuka layar login).
+  Future<void> markSignedOut() async {
+    if (!ref.mounted) return;
+    state = const AsyncData(false);
+  }
 }
 
 final sessionControllerProvider =
