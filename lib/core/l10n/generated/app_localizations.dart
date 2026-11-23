@@ -463,6 +463,174 @@ abstract class AppLocalizations {
   /// In id, this message translates to:
   /// **'Keluar…'**
   String get profileLoggingOut;
+
+  /// No description provided for @catalogSearchHint.
+  ///
+  /// In id, this message translates to:
+  /// **'Cari konser, artis, atau kota'**
+  String get catalogSearchHint;
+
+  /// No description provided for @catalogClearSearch.
+  ///
+  /// In id, this message translates to:
+  /// **'Hapus pencarian'**
+  String get catalogClearSearch;
+
+  /// No description provided for @catalogFilter.
+  ///
+  /// In id, this message translates to:
+  /// **'Filter'**
+  String get catalogFilter;
+
+  /// No description provided for @catalogFilterTitle.
+  ///
+  /// In id, this message translates to:
+  /// **'Filter katalog'**
+  String get catalogFilterTitle;
+
+  /// No description provided for @catalogFilterCity.
+  ///
+  /// In id, this message translates to:
+  /// **'Kota'**
+  String get catalogFilterCity;
+
+  /// No description provided for @catalogFilterCityHint.
+  ///
+  /// In id, this message translates to:
+  /// **'Mis. Jakarta'**
+  String get catalogFilterCityHint;
+
+  /// No description provided for @catalogFilterGenre.
+  ///
+  /// In id, this message translates to:
+  /// **'Genre'**
+  String get catalogFilterGenre;
+
+  /// No description provided for @catalogFilterGenreHint.
+  ///
+  /// In id, this message translates to:
+  /// **'Mis. Electronic'**
+  String get catalogFilterGenreHint;
+
+  /// No description provided for @catalogSort.
+  ///
+  /// In id, this message translates to:
+  /// **'Urutkan'**
+  String get catalogSort;
+
+  /// No description provided for @catalogSortNearest.
+  ///
+  /// In id, this message translates to:
+  /// **'Terdekat'**
+  String get catalogSortNearest;
+
+  /// No description provided for @catalogSortNewest.
+  ///
+  /// In id, this message translates to:
+  /// **'Terbaru'**
+  String get catalogSortNewest;
+
+  /// No description provided for @catalogSortCheapest.
+  ///
+  /// In id, this message translates to:
+  /// **'Termurah'**
+  String get catalogSortCheapest;
+
+  /// No description provided for @catalogApplyFilters.
+  ///
+  /// In id, this message translates to:
+  /// **'Terapkan'**
+  String get catalogApplyFilters;
+
+  /// No description provided for @catalogResetFilters.
+  ///
+  /// In id, this message translates to:
+  /// **'Reset'**
+  String get catalogResetFilters;
+
+  /// No description provided for @catalogEmptyTitle.
+  ///
+  /// In id, this message translates to:
+  /// **'Belum ada konser'**
+  String get catalogEmptyTitle;
+
+  /// No description provided for @catalogEmptyBody.
+  ///
+  /// In id, this message translates to:
+  /// **'Tidak ada event yang cocok dengan pencarian atau filter kamu.'**
+  String get catalogEmptyBody;
+
+  /// No description provided for @catalogEmptyAction.
+  ///
+  /// In id, this message translates to:
+  /// **'Hapus pencarian & filter'**
+  String get catalogEmptyAction;
+
+  /// No description provided for @catalogRetry.
+  ///
+  /// In id, this message translates to:
+  /// **'Coba lagi'**
+  String get catalogRetry;
+
+  /// No description provided for @catalogStatsTitle.
+  ///
+  /// In id, this message translates to:
+  /// **'Statistik platform'**
+  String get catalogStatsTitle;
+
+  /// No description provided for @catalogStatEvents.
+  ///
+  /// In id, this message translates to:
+  /// **'Event aktif'**
+  String get catalogStatEvents;
+
+  /// No description provided for @catalogStatTickets.
+  ///
+  /// In id, this message translates to:
+  /// **'Tiket terjual'**
+  String get catalogStatTickets;
+
+  /// No description provided for @catalogStatOrganizers.
+  ///
+  /// In id, this message translates to:
+  /// **'Promotor terverifikasi'**
+  String get catalogStatOrganizers;
+
+  /// No description provided for @catalogStatCities.
+  ///
+  /// In id, this message translates to:
+  /// **'Kota'**
+  String get catalogStatCities;
+
+  /// No description provided for @catalogDateTba.
+  ///
+  /// In id, this message translates to:
+  /// **'Jadwal menyusul'**
+  String get catalogDateTba;
+
+  /// No description provided for @catalogVenueUnknown.
+  ///
+  /// In id, this message translates to:
+  /// **'Venue menyusul'**
+  String get catalogVenueUnknown;
+
+  /// No description provided for @catalogPriceFrom.
+  ///
+  /// In id, this message translates to:
+  /// **'Mulai {price}'**
+  String catalogPriceFrom(String price);
+
+  /// No description provided for @catalogPriceUnavailable.
+  ///
+  /// In id, this message translates to:
+  /// **'Harga belum tersedia'**
+  String get catalogPriceUnavailable;
+
+  /// No description provided for @catalogSoldOut.
+  ///
+  /// In id, this message translates to:
+  /// **'Tiket habis'**
+  String get catalogSoldOut;
 }
 
 class _AppLocalizationsDelegate

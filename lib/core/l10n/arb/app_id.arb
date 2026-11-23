@@ -74,5 +74,40 @@
   "profileSaved": "Profil tersimpan.",
   "profileRetry": "Coba lagi",
   "profileLogout": "Keluar",
-  "profileLoggingOut": "Keluar…"
+  "profileLoggingOut": "Keluar…",
+  "catalogSearchHint": "Cari konser, artis, atau kota",
+  "catalogClearSearch": "Hapus pencarian",
+  "catalogFilter": "Filter",
+  "catalogFilterTitle": "Filter katalog",
+  "catalogFilterCity": "Kota",
+  "catalogFilterCityHint": "Mis. Jakarta",
+  "catalogFilterGenre": "Genre",
+  "catalogFilterGenreHint": "Mis. Electronic",
+  "catalogSort": "Urutkan",
+  "catalogSortNearest": "Terdekat",
+  "catalogSortNewest": "Terbaru",
+  "catalogSortCheapest": "Termurah",
+  "catalogApplyFilters": "Terapkan",
+  "catalogResetFilters": "Reset",
+  "catalogEmptyTitle": "Belum ada konser",
+  "catalogEmptyBody": "Tidak ada event yang cocok dengan pencarian atau filter kamu.",
+  "catalogEmptyAction": "Hapus pencarian & filter",
+  "catalogRetry": "Coba lagi",
+  "catalogStatsTitle": "Statistik platform",
+  "catalogStatEvents": "Event aktif",
+  "catalogStatTickets": "Tiket terjual",
+  "catalogStatOrganizers": "Promotor terverifikasi",
+  "catalogStatCities": "Kota",
+  "catalogDateTba": "Jadwal menyusul",
+  "catalogVenueUnknown": "Venue menyusul",
+  "catalogPriceFrom": "Mulai {price}",
+  "@catalogPriceFrom": {
+    "placeholders": {
+      "price": {
+        "type": "String"
+      }
+    }
+  },
+  "catalogPriceUnavailable": "Harga belum tersedia",
+  "catalogSoldOut": "Tiket habis"
 }
