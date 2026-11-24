@@ -4,10 +4,10 @@
 
 **Blocked by:** 04 (Login + OTP + sesi persist + auto-refresh).
 
-**Status:** ready-for-agent
+**Status:** done
 
-- [ ] Daftar event berposter tampil dari API beserta statistik event
-- [ ] Pencarian kata kunci memfilter hasil
-- [ ] Filter daftar berfungsi
-- [ ] Loading, error, dan empty state jelas
-- [ ] Test parsing response & provider katalog lewat seam HTTP
+- [x] Daftar event berposter tampil dari API beserta statistik event
+- [x] Pencarian kata kunci memfilter hasil
+- [x] Filter daftar berfungsi
+- [x] Loading, error, dan empty state jelas
+- [x] Test parsing response & provider katalog lewat seam HTTP

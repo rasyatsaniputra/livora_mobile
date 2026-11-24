@@ -4,6 +4,7 @@ import 'package:livora_mobile/core/auth/token_store.dart';
 import 'package:livora_mobile/core/router/app_router.dart';
 import 'package:livora_mobile/features/auth/data/auth_repository.dart';
 
+import '../../support/catalog_fixtures.dart';
 import '../../support/fake_http_adapter.dart';
 import '../../support/memory_token_store.dart';
 import '../../support/test_app.dart';
@@ -83,10 +84,17 @@ void main() {
 
   group('Layar verifikasi OTP (/register/verify)', () {    testWidgets('verifikasi sukses: token tersimpan dan sampai ke Katalog',
         (tester) async {
-      final adapter = FakeHttpAdapter(200, {
-        'access_token': 'access-1',
-        'refresh_token': 'refresh-1',
-      });
+      final adapter = FakeHttpAdapter.queue([
+        FakeResponse(200, {
+          'access_token': 'access-1',
+          'refresh_token': 'refresh-1',
+        }),
+        FakeResponse(
+          200,
+          catalogEventsResponse([catalogEventJson(posterUrl: null)]),
+        ),
+        FakeResponse(200, catalogStatsResponse()),
+      ]);
       final store = MemoryTokenStore();
 
       await pumpAfterglowApp(
@@ -110,16 +118,16 @@ void main() {
       expect(store.accessToken, 'access-1');
       expect(store.refreshToken, 'refresh-1');
 
-      // Berpindah ke home sementara (Katalog).
+      // Berpindah ke home (Katalog) dan event pertama dimuat.
       expect(find.text('Katalog'), findsWidgets);
+      expect(find.text('Soundtix Fest 2026: The Grand Stage'), findsOneWidget);
 
       // Tepat satu request verifikasi dengan isi yang benar.
-      expect(adapter.requests, hasLength(1));
-      expect(
-        adapter.requests.single.url.endsWith('/auth/verify-otp'),
-        isTrue,
-      );
-      expect(adapter.requests.single.body, {
+      final verifyCalls = adapter.requests
+          .where((r) => r.url.endsWith('/auth/verify-otp'))
+          .toList();
+      expect(verifyCalls, hasLength(1));
+      expect(verifyCalls.single.body, {
         'email': 'baru@soundtix.id',
         'otp': '123456',
         'username': 'Budi Santoso',

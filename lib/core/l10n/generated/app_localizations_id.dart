@@ -203,4 +203,91 @@ class AppLocalizationsId extends AppLocalizations {
 
   @override
   String get profileLoggingOut => 'Keluar…';
+
+  @override
+  String get catalogSearchHint => 'Cari konser, artis, atau kota';
+
+  @override
+  String get catalogClearSearch => 'Hapus pencarian';
+
+  @override
+  String get catalogFilter => 'Filter';
+
+  @override
+  String get catalogFilterTitle => 'Filter katalog';
+
+  @override
+  String get catalogFilterCity => 'Kota';
+
+  @override
+  String get catalogFilterCityHint => 'Mis. Jakarta';
+
+  @override
+  String get catalogFilterGenre => 'Genre';
+
+  @override
+  String get catalogFilterGenreHint => 'Mis. Electronic';
+
+  @override
+  String get catalogSort => 'Urutkan';
+
+  @override
+  String get catalogSortNearest => 'Terdekat';
+
+  @override
+  String get catalogSortNewest => 'Terbaru';
+
+  @override
+  String get catalogSortCheapest => 'Termurah';
+
+  @override
+  String get catalogApplyFilters => 'Terapkan';
+
+  @override
+  String get catalogResetFilters => 'Reset';
+
+  @override
+  String get catalogEmptyTitle => 'Belum ada konser';
+
+  @override
+  String get catalogEmptyBody =>
+      'Tidak ada event yang cocok dengan pencarian atau filter kamu.';
+
+  @override
+  String get catalogEmptyAction => 'Hapus pencarian & filter';
+
+  @override
+  String get catalogRetry => 'Coba lagi';
+
+  @override
+  String get catalogStatsTitle => 'Statistik platform';
+
+  @override
+  String get catalogStatEvents => 'Event aktif';
+
+  @override
+  String get catalogStatTickets => 'Tiket terjual';
+
+  @override
+  String get catalogStatOrganizers => 'Promotor terverifikasi';
+
+  @override
+  String get catalogStatCities => 'Kota';
+
+  @override
+  String get catalogDateTba => 'Jadwal menyusul';
+
+  @override
+  String get catalogVenueUnknown => 'Venue menyusul';
+
+  @override
+  String catalogPriceFrom(String price) {
+    return 'Mulai $price';
+  }
+
+  @override
+  String get catalogPriceUnavailable => 'Harga belum tersedia';
+
+  @override
+  String get catalogSoldOut => 'Tiket habis';
 }

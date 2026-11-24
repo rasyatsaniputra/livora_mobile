@@ -74,5 +74,40 @@
   "profileSaved": "Profile saved.",
   "profileRetry": "Try again",
   "profileLogout": "Sign out",
-  "profileLoggingOut": "Signing out…"
+  "profileLoggingOut": "Signing out…",
+  "catalogSearchHint": "Search concerts, artists, or cities",
+  "catalogClearSearch": "Clear search",
+  "catalogFilter": "Filter",
+  "catalogFilterTitle": "Filter catalog",
+  "catalogFilterCity": "City",
+  "catalogFilterCityHint": "e.g. Jakarta",
+  "catalogFilterGenre": "Genre",
+  "catalogFilterGenreHint": "e.g. Electronic",
+  "catalogSort": "Sort by",
+  "catalogSortNearest": "Nearest",
+  "catalogSortNewest": "Newest",
+  "catalogSortCheapest": "Cheapest",
+  "catalogApplyFilters": "Apply",
+  "catalogResetFilters": "Reset",
+  "catalogEmptyTitle": "No concerts yet",
+  "catalogEmptyBody": "No events match your search or filters.",
+  "catalogEmptyAction": "Clear search & filters",
+  "catalogRetry": "Try again",
+  "catalogStatsTitle": "Platform stats",
+  "catalogStatEvents": "Active events",
+  "catalogStatTickets": "Tickets sold",
+  "catalogStatOrganizers": "Verified organizers",
+  "catalogStatCities": "Cities",
+  "catalogDateTba": "Schedule to be announced",
+  "catalogVenueUnknown": "Venue to be announced",
+  "catalogPriceFrom": "From {price}",
+  "@catalogPriceFrom": {
+    "placeholders": {
+      "price": {
+        "type": "String"
+      }
+    }
+  },
+  "catalogPriceUnavailable": "Price unavailable",
+  "catalogSoldOut": "Sold out"
 }

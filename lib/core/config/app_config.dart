@@ -21,4 +21,16 @@ abstract final class AppConfig {
     'SOUNDTIX_BASE_URL',
     defaultValue: 'http://10.0.2.2:3000',
   );
+
+  /// URL absolut untuk aset yang dikirim backend sebagai path relatif
+  /// (poster event: `/uploads/...`). URL absolut dibiarkan apa adanya.
+  static String mediaUrl(String path) {
+    if (path.startsWith('http://') || path.startsWith('https://')) {
+      return path;
+    }
+    final base = baseUrl.endsWith('/')
+        ? baseUrl.substring(0, baseUrl.length - 1)
+        : baseUrl;
+    return path.startsWith('/') ? '$base$path' : '$base/$path';
+  }
 }

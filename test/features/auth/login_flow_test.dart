@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
+import '../../support/catalog_fixtures.dart';
 import '../../support/fake_http_adapter.dart';
 import '../../support/memory_token_store.dart';
 import '../../support/test_app.dart';
@@ -131,6 +132,11 @@ void main() {
           'access_token': 'access-1',
           'refresh_token': 'refresh-1',
         }),
+        FakeResponse(
+          200,
+          catalogEventsResponse([catalogEventJson(posterUrl: null)]),
+        ),
+        FakeResponse(200, catalogStatsResponse()),
       ]);
       final store = MemoryTokenStore();
 
@@ -166,13 +172,13 @@ void main() {
       expect(store.accessToken, 'access-1');
       expect(store.refreshToken, 'refresh-1');
       expect(find.text('Katalog'), findsWidgets);
+      expect(find.text('Soundtix Fest 2026: The Grand Stage'), findsOneWidget);
 
-      expect(adapter.requests, hasLength(2));
-      expect(
-        adapter.requests.last.url.endsWith('/auth/verify-otp'),
-        isTrue,
-      );
-      expect(adapter.requests.last.body, {
+      final verifyCalls = adapter.requests
+          .where((r) => r.url.endsWith('/auth/verify-otp'))
+          .toList();
+      expect(verifyCalls, hasLength(1));
+      expect(verifyCalls.single.body, {
         'email': 'buyer@soundtix.id',
         'otp': '123456',
       });
@@ -242,18 +248,19 @@ void main() {
           'access_token': 'access-baru',
           'refresh_token': 'refresh-2',
         }),
-        FakeResponse(200, {'status': 'ok'}),
+        FakeResponse(
+          200,
+          catalogEventsResponse([catalogEventJson(posterUrl: null)]),
+        ),
+        FakeResponse(200, catalogStatsResponse()),
       ]);
 
       // Sesi tersimpan membuka home; access token lama baru terbukti
-      // kedaluwarsa saat request pertama setelah restart.
+      // kedaluwarsa saat katalog memuat event pertama setelah restart.
       await pumpAppFromSplash(tester, adapter: adapter, store: store);
+
       expect(find.text('Katalog'), findsWidgets);
-
-      await tester.tap(find.text('Cek /health/'));
-      await tester.pumpAndSettle();
-
-      expect(find.text('Backend terjangkau ✓'), findsOneWidget);
+      expect(find.text('Soundtix Fest 2026: The Grand Stage'), findsOneWidget);
       expect(store.accessToken, 'access-baru');
       expect(store.refreshToken, 'refresh-2');
       expect(
@@ -276,7 +283,11 @@ void main() {
           'access_token': 'access-2',
           'refresh_token': 'refresh-2',
         }),
-        FakeResponse(200, {'status': 'ok'}),
+        FakeResponse(
+          200,
+          catalogEventsResponse([catalogEventJson(posterUrl: null)]),
+        ),
+        FakeResponse(200, catalogStatsResponse()),
       ]);
       final store = MemoryTokenStore();
 
@@ -295,12 +306,9 @@ void main() {
       await tester.tap(find.widgetWithText(FilledButton, 'Verifikasi'));
       await tester.pumpAndSettle();
 
-      // Request berikutnya (lewat UI katalog) memakai access token hasil login
-      // dan pulih otomatis saat server membalas 401: refresh → retry.
-      await tester.tap(find.text('Cek /health/'));
-      await tester.pumpAndSettle();
-
-      expect(find.text('Backend terjangkau ✓'), findsOneWidget);
+      // Katalog memuat event memakai access token hasil login dan pulih
+      // otomatis saat server membalas 401: refresh → retry.
+      expect(find.text('Soundtix Fest 2026: The Grand Stage'), findsOneWidget);
       expect(adapter.requests.last.headers['Authorization'], 'Bearer access-2');
 
       // Refresh dipanggil sekali dengan refresh token sesi login.

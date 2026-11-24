@@ -204,4 +204,90 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get profileLoggingOut => 'Signing out…';
+
+  @override
+  String get catalogSearchHint => 'Search concerts, artists, or cities';
+
+  @override
+  String get catalogClearSearch => 'Clear search';
+
+  @override
+  String get catalogFilter => 'Filter';
+
+  @override
+  String get catalogFilterTitle => 'Filter catalog';
+
+  @override
+  String get catalogFilterCity => 'City';
+
+  @override
+  String get catalogFilterCityHint => 'e.g. Jakarta';
+
+  @override
+  String get catalogFilterGenre => 'Genre';
+
+  @override
+  String get catalogFilterGenreHint => 'e.g. Electronic';
+
+  @override
+  String get catalogSort => 'Sort by';
+
+  @override
+  String get catalogSortNearest => 'Nearest';
+
+  @override
+  String get catalogSortNewest => 'Newest';
+
+  @override
+  String get catalogSortCheapest => 'Cheapest';
+
+  @override
+  String get catalogApplyFilters => 'Apply';
+
+  @override
+  String get catalogResetFilters => 'Reset';
+
+  @override
+  String get catalogEmptyTitle => 'No concerts yet';
+
+  @override
+  String get catalogEmptyBody => 'No events match your search or filters.';
+
+  @override
+  String get catalogEmptyAction => 'Clear search & filters';
+
+  @override
+  String get catalogRetry => 'Try again';
+
+  @override
+  String get catalogStatsTitle => 'Platform stats';
+
+  @override
+  String get catalogStatEvents => 'Active events';
+
+  @override
+  String get catalogStatTickets => 'Tickets sold';
+
+  @override
+  String get catalogStatOrganizers => 'Verified organizers';
+
+  @override
+  String get catalogStatCities => 'Cities';
+
+  @override
+  String get catalogDateTba => 'Schedule to be announced';
+
+  @override
+  String get catalogVenueUnknown => 'Venue to be announced';
+
+  @override
+  String catalogPriceFrom(String price) {
+    return 'From $price';
+  }
+
+  @override
+  String get catalogPriceUnavailable => 'Price unavailable';
+
+  @override
+  String get catalogSoldOut => 'Sold out';
 }
