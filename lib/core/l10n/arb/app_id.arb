@@ -109,5 +109,50 @@
     }
   },
   "catalogPriceUnavailable": "Harga belum tersedia",
-  "catalogSoldOut": "Tiket habis"
+  "catalogSoldOut": "Tiket habis",
+  "eventDetailTitle": "Detail event",
+  "eventDetailRetry": "Coba lagi",
+  "eventDetailAbout": "Tentang event",
+  "eventDetailAboutEmpty": "Deskripsi belum tersedia.",
+  "eventDetailDate": "Tanggal",
+  "eventDetailDateRange": "{start} – {end}",
+  "@eventDetailDateRange": {
+    "placeholders": {
+      "start": {
+        "type": "String"
+      },
+      "end": {
+        "type": "String"
+      }
+    }
+  },
+  "eventDetailVenue": "Venue",
+  "eventDetailVenueCity": "{venue}, {city}",
+  "@eventDetailVenueCity": {
+    "placeholders": {
+      "venue": {
+        "type": "String"
+      },
+      "city": {
+        "type": "String"
+      }
+    }
+  },
+  "eventDetailArtist": "Artis",
+  "eventDetailCategories": "Kategori tiket",
+  "eventDetailCategoriesEmpty": "Kategori tiket belum tersedia.",
+  "eventDetailRemaining": "{count} tiket tersisa",
+  "@eventDetailRemaining": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "eventDetailCategorySoldOut": "Habis",
+  "eventDetailOrganizer": "Penyelenggara",
+  "eventDetailOrganizerVerified": "Promotor terverifikasi",
+  "eventDetailOrganizerUnknown": "Penyelenggara belum diketahui",
+  "eventDetailContinue": "Lanjut ke pemesanan",
+  "checkoutTitle": "Pemesanan"
 }

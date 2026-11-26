@@ -1,6 +1,7 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../core/network/api_client.dart';
+import '../../../core/network/api_envelope.dart';
 import '../../../core/network/api_exception.dart';
 import '../../../core/network/providers.dart';
 import 'catalog_event.dart';
@@ -40,7 +41,7 @@ class CatalogRepository {
         offset: offset,
       ),
     );
-    final data = _dataOf(response);
+    final data = envelopeData(response);
     if (data is! List) throw ApiException(ApiExceptionKind.server);
     try {
       return [
@@ -56,7 +57,7 @@ class CatalogRepository {
   /// promotor terverifikasi, dan jumlah kota).
   Future<CatalogStats> fetchStats() async {
     final response = await client.get<Object?>('/events/stats');
-    final data = _dataOf(response);
+    final data = envelopeData(response);
     if (data is! Map<String, Object?>) {
       throw ApiException(ApiExceptionKind.server);
     }
@@ -84,15 +85,6 @@ class CatalogRepository {
     if (genreFilter.isNotEmpty) params['genre'] = genreFilter;
     if (offset > 0) params['offset'] = offset;
     return params;
-  }
-
-  /// Isi `data` dari envelope; bentuk menyimpang dilaporkan sebagai
-  /// kesalahan server, bukan crash parse.
-  Object? _dataOf(Object? response) {
-    if (response is! Map<String, Object?>) {
-      throw ApiException(ApiExceptionKind.server);
-    }
-    return response['data'];
   }
 }
 

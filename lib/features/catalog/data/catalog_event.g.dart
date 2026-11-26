@@ -8,13 +8,13 @@ part of 'catalog_event.dart';
 
 _CatalogEvent _$CatalogEventFromJson(Map<String, dynamic> json) =>
     _CatalogEvent(
-      id: _idFromJson(json['id']),
+      id: idFromJson(json['id']),
       name: json['nama_event'] as String,
       venue: json['alamat'] as String? ?? '',
       genre: json['genre'] as String?,
       posterUrl: json['poster_url'] as String?,
-      startsAt: _dateFromJson(json['tanggal_mulai']),
-      minPrice: json['min_price'] == null ? 0 : _numFromJson(json['min_price']),
+      startsAt: dateFromJson(json['tanggal_mulai']),
+      minPrice: json['min_price'] == null ? 0 : numFromJson(json['min_price']),
       soldOut: json['is_sold_out'] as bool? ?? false,
     );
 
@@ -34,16 +34,16 @@ _CatalogStats _$CatalogStatsFromJson(Map<String, dynamic> json) =>
     _CatalogStats(
       activeEvents: json['active_events_count'] == null
           ? 0
-          : _intFromJson(json['active_events_count']),
+          : intFromJson(json['active_events_count']),
       ticketsSold: json['tickets_sold_count'] == null
           ? 0
-          : _intFromJson(json['tickets_sold_count']),
+          : intFromJson(json['tickets_sold_count']),
       verifiedOrganizers: json['verified_organizers_count'] == null
           ? 0
-          : _intFromJson(json['verified_organizers_count']),
+          : intFromJson(json['verified_organizers_count']),
       cities: json['cities_count'] == null
           ? 0
-          : _intFromJson(json['cities_count']),
+          : intFromJson(json['cities_count']),
     );
 
 Map<String, dynamic> _$CatalogStatsToJson(_CatalogStats instance) =>

@@ -7,6 +7,7 @@ import '../../features/auth/presentation/otp_verification_screen.dart';
 import '../../features/auth/presentation/profile_screen.dart';
 import '../../features/auth/presentation/register_screen.dart';
 import '../../features/catalog/presentation/catalog_screen.dart';
+import '../../features/catalog/presentation/event_detail_screen.dart';
 import '../l10n/generated/app_localizations.dart';
 import '../presentation/placeholder_screen.dart';
 import '../presentation/splash_screen.dart';
@@ -45,6 +46,15 @@ final appRouterProvider = Provider<GoRouter>((ref) {
         path: AppRoutes.registerVerify,
         builder: (context, state) => const OtpVerificationScreen(),
       ),
+      // Pemesanan belum dibangun (tiket 09): tombol lanjut dari detail event
+      // bernavigasi ke placeholder ini supaya alurnya sudah terasa.
+      GoRoute(
+        path: AppRoutes.checkout,
+        builder: (context, state) {
+          final l10n = AppLocalizations.of(context)!;
+          return PlaceholderScreen(title: l10n.checkoutTitle);
+        },
+      ),
       StatefulShellRoute.indexedStack(
         builder: (context, state, shell) => _ShellScaffold(shell: shell),
         branches: [
@@ -52,6 +62,14 @@ final appRouterProvider = Provider<GoRouter>((ref) {
             GoRoute(
               path: AppRoutes.catalog,
               builder: (context, state) => const CatalogScreen(),
+              routes: [
+                GoRoute(
+                  path: 'event/:id',
+                  builder: (context, state) => EventDetailScreen(
+                    eventId: state.pathParameters['id']!,
+                  ),
+                ),
+              ],
             ),
           ]),
           StatefulShellBranch(routes: [

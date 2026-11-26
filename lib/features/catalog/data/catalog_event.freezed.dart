@@ -16,8 +16,8 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$CatalogEvent {
 
-@JsonKey(fromJson: _idFromJson) String? get id;@JsonKey(name: 'nama_event') String get name;/// Alamat venue — disebut `alamat` oleh backend.
-@JsonKey(name: 'alamat') String get venue; String? get genre;@JsonKey(name: 'poster_url') String? get posterUrl;@JsonKey(name: 'tanggal_mulai', fromJson: _dateFromJson) DateTime? get startsAt;@JsonKey(name: 'min_price', fromJson: _numFromJson) num get minPrice;@JsonKey(name: 'is_sold_out') bool get soldOut;
+@JsonKey(fromJson: idFromJson) String? get id;@JsonKey(name: 'nama_event') String get name;/// Alamat venue — disebut `alamat` oleh backend.
+@JsonKey(name: 'alamat') String get venue; String? get genre;@JsonKey(name: 'poster_url') String? get posterUrl;@JsonKey(name: 'tanggal_mulai', fromJson: dateFromJson) DateTime? get startsAt;@JsonKey(name: 'min_price', fromJson: numFromJson) num get minPrice;@JsonKey(name: 'is_sold_out') bool get soldOut;
 /// Create a copy of CatalogEvent
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -55,7 +55,7 @@ abstract mixin class $CatalogEventCopyWith<$Res>  {
   factory $CatalogEventCopyWith(CatalogEvent value, $Res Function(CatalogEvent) _then) = _$CatalogEventCopyWithImpl;
 @useResult
 $Res call({
-@JsonKey(fromJson: _idFromJson) String? id,@JsonKey(name: 'nama_event') String name,@JsonKey(name: 'alamat') String venue, String? genre,@JsonKey(name: 'poster_url') String? posterUrl,@JsonKey(name: 'tanggal_mulai', fromJson: _dateFromJson) DateTime? startsAt,@JsonKey(name: 'min_price', fromJson: _numFromJson) num minPrice,@JsonKey(name: 'is_sold_out') bool soldOut
+@JsonKey(fromJson: idFromJson) String? id,@JsonKey(name: 'nama_event') String name,@JsonKey(name: 'alamat') String venue, String? genre,@JsonKey(name: 'poster_url') String? posterUrl,@JsonKey(name: 'tanggal_mulai', fromJson: dateFromJson) DateTime? startsAt,@JsonKey(name: 'min_price', fromJson: numFromJson) num minPrice,@JsonKey(name: 'is_sold_out') bool soldOut
 });
 
 
@@ -167,7 +167,7 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function(@JsonKey(fromJson: _idFromJson)  String? id, @JsonKey(name: 'nama_event')  String name, @JsonKey(name: 'alamat')  String venue,  String? genre, @JsonKey(name: 'poster_url')  String? posterUrl, @JsonKey(name: 'tanggal_mulai', fromJson: _dateFromJson)  DateTime? startsAt, @JsonKey(name: 'min_price', fromJson: _numFromJson)  num minPrice, @JsonKey(name: 'is_sold_out')  bool soldOut)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function(@JsonKey(fromJson: idFromJson)  String? id, @JsonKey(name: 'nama_event')  String name, @JsonKey(name: 'alamat')  String venue,  String? genre, @JsonKey(name: 'poster_url')  String? posterUrl, @JsonKey(name: 'tanggal_mulai', fromJson: dateFromJson)  DateTime? startsAt, @JsonKey(name: 'min_price', fromJson: numFromJson)  num minPrice, @JsonKey(name: 'is_sold_out')  bool soldOut)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _CatalogEvent() when $default != null:
 return $default(_that.id,_that.name,_that.venue,_that.genre,_that.posterUrl,_that.startsAt,_that.minPrice,_that.soldOut);case _:
@@ -188,7 +188,7 @@ return $default(_that.id,_that.name,_that.venue,_that.genre,_that.posterUrl,_tha
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function(@JsonKey(fromJson: _idFromJson)  String? id, @JsonKey(name: 'nama_event')  String name, @JsonKey(name: 'alamat')  String venue,  String? genre, @JsonKey(name: 'poster_url')  String? posterUrl, @JsonKey(name: 'tanggal_mulai', fromJson: _dateFromJson)  DateTime? startsAt, @JsonKey(name: 'min_price', fromJson: _numFromJson)  num minPrice, @JsonKey(name: 'is_sold_out')  bool soldOut)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function(@JsonKey(fromJson: idFromJson)  String? id, @JsonKey(name: 'nama_event')  String name, @JsonKey(name: 'alamat')  String venue,  String? genre, @JsonKey(name: 'poster_url')  String? posterUrl, @JsonKey(name: 'tanggal_mulai', fromJson: dateFromJson)  DateTime? startsAt, @JsonKey(name: 'min_price', fromJson: numFromJson)  num minPrice, @JsonKey(name: 'is_sold_out')  bool soldOut)  $default,) {final _that = this;
 switch (_that) {
 case _CatalogEvent():
 return $default(_that.id,_that.name,_that.venue,_that.genre,_that.posterUrl,_that.startsAt,_that.minPrice,_that.soldOut);case _:
@@ -208,7 +208,7 @@ return $default(_that.id,_that.name,_that.venue,_that.genre,_that.posterUrl,_tha
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function(@JsonKey(fromJson: _idFromJson)  String? id, @JsonKey(name: 'nama_event')  String name, @JsonKey(name: 'alamat')  String venue,  String? genre, @JsonKey(name: 'poster_url')  String? posterUrl, @JsonKey(name: 'tanggal_mulai', fromJson: _dateFromJson)  DateTime? startsAt, @JsonKey(name: 'min_price', fromJson: _numFromJson)  num minPrice, @JsonKey(name: 'is_sold_out')  bool soldOut)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function(@JsonKey(fromJson: idFromJson)  String? id, @JsonKey(name: 'nama_event')  String name, @JsonKey(name: 'alamat')  String venue,  String? genre, @JsonKey(name: 'poster_url')  String? posterUrl, @JsonKey(name: 'tanggal_mulai', fromJson: dateFromJson)  DateTime? startsAt, @JsonKey(name: 'min_price', fromJson: numFromJson)  num minPrice, @JsonKey(name: 'is_sold_out')  bool soldOut)?  $default,) {final _that = this;
 switch (_that) {
 case _CatalogEvent() when $default != null:
 return $default(_that.id,_that.name,_that.venue,_that.genre,_that.posterUrl,_that.startsAt,_that.minPrice,_that.soldOut);case _:
@@ -223,17 +223,17 @@ return $default(_that.id,_that.name,_that.venue,_that.genre,_that.posterUrl,_tha
 @JsonSerializable()
 
 class _CatalogEvent implements CatalogEvent {
-  const _CatalogEvent({@JsonKey(fromJson: _idFromJson) this.id, @JsonKey(name: 'nama_event') required this.name, @JsonKey(name: 'alamat') this.venue = '', this.genre, @JsonKey(name: 'poster_url') this.posterUrl, @JsonKey(name: 'tanggal_mulai', fromJson: _dateFromJson) this.startsAt, @JsonKey(name: 'min_price', fromJson: _numFromJson) this.minPrice = 0, @JsonKey(name: 'is_sold_out') this.soldOut = false});
+  const _CatalogEvent({@JsonKey(fromJson: idFromJson) this.id, @JsonKey(name: 'nama_event') required this.name, @JsonKey(name: 'alamat') this.venue = '', this.genre, @JsonKey(name: 'poster_url') this.posterUrl, @JsonKey(name: 'tanggal_mulai', fromJson: dateFromJson) this.startsAt, @JsonKey(name: 'min_price', fromJson: numFromJson) this.minPrice = 0, @JsonKey(name: 'is_sold_out') this.soldOut = false});
   factory _CatalogEvent.fromJson(Map<String, dynamic> json) => _$CatalogEventFromJson(json);
 
-@override@JsonKey(fromJson: _idFromJson) final  String? id;
+@override@JsonKey(fromJson: idFromJson) final  String? id;
 @override@JsonKey(name: 'nama_event') final  String name;
 /// Alamat venue — disebut `alamat` oleh backend.
 @override@JsonKey(name: 'alamat') final  String venue;
 @override final  String? genre;
 @override@JsonKey(name: 'poster_url') final  String? posterUrl;
-@override@JsonKey(name: 'tanggal_mulai', fromJson: _dateFromJson) final  DateTime? startsAt;
-@override@JsonKey(name: 'min_price', fromJson: _numFromJson) final  num minPrice;
+@override@JsonKey(name: 'tanggal_mulai', fromJson: dateFromJson) final  DateTime? startsAt;
+@override@JsonKey(name: 'min_price', fromJson: numFromJson) final  num minPrice;
 @override@JsonKey(name: 'is_sold_out') final  bool soldOut;
 
 /// Create a copy of CatalogEvent
@@ -271,7 +271,7 @@ abstract mixin class _$CatalogEventCopyWith<$Res> implements $CatalogEventCopyWi
   factory _$CatalogEventCopyWith(_CatalogEvent value, $Res Function(_CatalogEvent) _then) = __$CatalogEventCopyWithImpl;
 @override @useResult
 $Res call({
-@JsonKey(fromJson: _idFromJson) String? id,@JsonKey(name: 'nama_event') String name,@JsonKey(name: 'alamat') String venue, String? genre,@JsonKey(name: 'poster_url') String? posterUrl,@JsonKey(name: 'tanggal_mulai', fromJson: _dateFromJson) DateTime? startsAt,@JsonKey(name: 'min_price', fromJson: _numFromJson) num minPrice,@JsonKey(name: 'is_sold_out') bool soldOut
+@JsonKey(fromJson: idFromJson) String? id,@JsonKey(name: 'nama_event') String name,@JsonKey(name: 'alamat') String venue, String? genre,@JsonKey(name: 'poster_url') String? posterUrl,@JsonKey(name: 'tanggal_mulai', fromJson: dateFromJson) DateTime? startsAt,@JsonKey(name: 'min_price', fromJson: numFromJson) num minPrice,@JsonKey(name: 'is_sold_out') bool soldOut
 });
 
 
@@ -309,7 +309,7 @@ as bool,
 /// @nodoc
 mixin _$CatalogStats {
 
-@JsonKey(name: 'active_events_count', fromJson: _intFromJson) int get activeEvents;@JsonKey(name: 'tickets_sold_count', fromJson: _intFromJson) int get ticketsSold;@JsonKey(name: 'verified_organizers_count', fromJson: _intFromJson) int get verifiedOrganizers;@JsonKey(name: 'cities_count', fromJson: _intFromJson) int get cities;
+@JsonKey(name: 'active_events_count', fromJson: intFromJson) int get activeEvents;@JsonKey(name: 'tickets_sold_count', fromJson: intFromJson) int get ticketsSold;@JsonKey(name: 'verified_organizers_count', fromJson: intFromJson) int get verifiedOrganizers;@JsonKey(name: 'cities_count', fromJson: intFromJson) int get cities;
 /// Create a copy of CatalogStats
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -347,7 +347,7 @@ abstract mixin class $CatalogStatsCopyWith<$Res>  {
   factory $CatalogStatsCopyWith(CatalogStats value, $Res Function(CatalogStats) _then) = _$CatalogStatsCopyWithImpl;
 @useResult
 $Res call({
-@JsonKey(name: 'active_events_count', fromJson: _intFromJson) int activeEvents,@JsonKey(name: 'tickets_sold_count', fromJson: _intFromJson) int ticketsSold,@JsonKey(name: 'verified_organizers_count', fromJson: _intFromJson) int verifiedOrganizers,@JsonKey(name: 'cities_count', fromJson: _intFromJson) int cities
+@JsonKey(name: 'active_events_count', fromJson: intFromJson) int activeEvents,@JsonKey(name: 'tickets_sold_count', fromJson: intFromJson) int ticketsSold,@JsonKey(name: 'verified_organizers_count', fromJson: intFromJson) int verifiedOrganizers,@JsonKey(name: 'cities_count', fromJson: intFromJson) int cities
 });
 
 
@@ -455,7 +455,7 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function(@JsonKey(name: 'active_events_count', fromJson: _intFromJson)  int activeEvents, @JsonKey(name: 'tickets_sold_count', fromJson: _intFromJson)  int ticketsSold, @JsonKey(name: 'verified_organizers_count', fromJson: _intFromJson)  int verifiedOrganizers, @JsonKey(name: 'cities_count', fromJson: _intFromJson)  int cities)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function(@JsonKey(name: 'active_events_count', fromJson: intFromJson)  int activeEvents, @JsonKey(name: 'tickets_sold_count', fromJson: intFromJson)  int ticketsSold, @JsonKey(name: 'verified_organizers_count', fromJson: intFromJson)  int verifiedOrganizers, @JsonKey(name: 'cities_count', fromJson: intFromJson)  int cities)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _CatalogStats() when $default != null:
 return $default(_that.activeEvents,_that.ticketsSold,_that.verifiedOrganizers,_that.cities);case _:
@@ -476,7 +476,7 @@ return $default(_that.activeEvents,_that.ticketsSold,_that.verifiedOrganizers,_t
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function(@JsonKey(name: 'active_events_count', fromJson: _intFromJson)  int activeEvents, @JsonKey(name: 'tickets_sold_count', fromJson: _intFromJson)  int ticketsSold, @JsonKey(name: 'verified_organizers_count', fromJson: _intFromJson)  int verifiedOrganizers, @JsonKey(name: 'cities_count', fromJson: _intFromJson)  int cities)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function(@JsonKey(name: 'active_events_count', fromJson: intFromJson)  int activeEvents, @JsonKey(name: 'tickets_sold_count', fromJson: intFromJson)  int ticketsSold, @JsonKey(name: 'verified_organizers_count', fromJson: intFromJson)  int verifiedOrganizers, @JsonKey(name: 'cities_count', fromJson: intFromJson)  int cities)  $default,) {final _that = this;
 switch (_that) {
 case _CatalogStats():
 return $default(_that.activeEvents,_that.ticketsSold,_that.verifiedOrganizers,_that.cities);case _:
@@ -496,7 +496,7 @@ return $default(_that.activeEvents,_that.ticketsSold,_that.verifiedOrganizers,_t
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function(@JsonKey(name: 'active_events_count', fromJson: _intFromJson)  int activeEvents, @JsonKey(name: 'tickets_sold_count', fromJson: _intFromJson)  int ticketsSold, @JsonKey(name: 'verified_organizers_count', fromJson: _intFromJson)  int verifiedOrganizers, @JsonKey(name: 'cities_count', fromJson: _intFromJson)  int cities)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function(@JsonKey(name: 'active_events_count', fromJson: intFromJson)  int activeEvents, @JsonKey(name: 'tickets_sold_count', fromJson: intFromJson)  int ticketsSold, @JsonKey(name: 'verified_organizers_count', fromJson: intFromJson)  int verifiedOrganizers, @JsonKey(name: 'cities_count', fromJson: intFromJson)  int cities)?  $default,) {final _that = this;
 switch (_that) {
 case _CatalogStats() when $default != null:
 return $default(_that.activeEvents,_that.ticketsSold,_that.verifiedOrganizers,_that.cities);case _:
@@ -511,13 +511,13 @@ return $default(_that.activeEvents,_that.ticketsSold,_that.verifiedOrganizers,_t
 @JsonSerializable()
 
 class _CatalogStats implements CatalogStats {
-  const _CatalogStats({@JsonKey(name: 'active_events_count', fromJson: _intFromJson) this.activeEvents = 0, @JsonKey(name: 'tickets_sold_count', fromJson: _intFromJson) this.ticketsSold = 0, @JsonKey(name: 'verified_organizers_count', fromJson: _intFromJson) this.verifiedOrganizers = 0, @JsonKey(name: 'cities_count', fromJson: _intFromJson) this.cities = 0});
+  const _CatalogStats({@JsonKey(name: 'active_events_count', fromJson: intFromJson) this.activeEvents = 0, @JsonKey(name: 'tickets_sold_count', fromJson: intFromJson) this.ticketsSold = 0, @JsonKey(name: 'verified_organizers_count', fromJson: intFromJson) this.verifiedOrganizers = 0, @JsonKey(name: 'cities_count', fromJson: intFromJson) this.cities = 0});
   factory _CatalogStats.fromJson(Map<String, dynamic> json) => _$CatalogStatsFromJson(json);
 
-@override@JsonKey(name: 'active_events_count', fromJson: _intFromJson) final  int activeEvents;
-@override@JsonKey(name: 'tickets_sold_count', fromJson: _intFromJson) final  int ticketsSold;
-@override@JsonKey(name: 'verified_organizers_count', fromJson: _intFromJson) final  int verifiedOrganizers;
-@override@JsonKey(name: 'cities_count', fromJson: _intFromJson) final  int cities;
+@override@JsonKey(name: 'active_events_count', fromJson: intFromJson) final  int activeEvents;
+@override@JsonKey(name: 'tickets_sold_count', fromJson: intFromJson) final  int ticketsSold;
+@override@JsonKey(name: 'verified_organizers_count', fromJson: intFromJson) final  int verifiedOrganizers;
+@override@JsonKey(name: 'cities_count', fromJson: intFromJson) final  int cities;
 
 /// Create a copy of CatalogStats
 /// with the given fields replaced by the non-null parameter values.
@@ -554,7 +554,7 @@ abstract mixin class _$CatalogStatsCopyWith<$Res> implements $CatalogStatsCopyWi
   factory _$CatalogStatsCopyWith(_CatalogStats value, $Res Function(_CatalogStats) _then) = __$CatalogStatsCopyWithImpl;
 @override @useResult
 $Res call({
-@JsonKey(name: 'active_events_count', fromJson: _intFromJson) int activeEvents,@JsonKey(name: 'tickets_sold_count', fromJson: _intFromJson) int ticketsSold,@JsonKey(name: 'verified_organizers_count', fromJson: _intFromJson) int verifiedOrganizers,@JsonKey(name: 'cities_count', fromJson: _intFromJson) int cities
+@JsonKey(name: 'active_events_count', fromJson: intFromJson) int activeEvents,@JsonKey(name: 'tickets_sold_count', fromJson: intFromJson) int ticketsSold,@JsonKey(name: 'verified_organizers_count', fromJson: intFromJson) int verifiedOrganizers,@JsonKey(name: 'cities_count', fromJson: intFromJson) int cities
 });
 
 
