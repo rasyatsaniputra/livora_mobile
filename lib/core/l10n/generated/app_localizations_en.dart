@@ -290,4 +290,65 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get catalogSoldOut => 'Sold out';
+
+  @override
+  String get eventDetailTitle => 'Event details';
+
+  @override
+  String get eventDetailRetry => 'Try again';
+
+  @override
+  String get eventDetailAbout => 'About the event';
+
+  @override
+  String get eventDetailAboutEmpty => 'Description not available yet.';
+
+  @override
+  String get eventDetailDate => 'Date';
+
+  @override
+  String eventDetailDateRange(String start, String end) {
+    return '$start – $end';
+  }
+
+  @override
+  String get eventDetailVenue => 'Venue';
+
+  @override
+  String eventDetailVenueCity(String venue, String city) {
+    return '$venue, $city';
+  }
+
+  @override
+  String get eventDetailArtist => 'Artist';
+
+  @override
+  String get eventDetailCategories => 'Ticket categories';
+
+  @override
+  String get eventDetailCategoriesEmpty =>
+      'Ticket categories not available yet.';
+
+  @override
+  String eventDetailRemaining(int count) {
+    return '$count tickets left';
+  }
+
+  @override
+  String get eventDetailCategorySoldOut => 'Sold out';
+
+  @override
+  String get eventDetailOrganizer => 'Organizer';
+
+  @override
+  String get eventDetailOrganizerVerified => 'Verified organizer';
+
+  @override
+  String get eventDetailOrganizerUnknown => 'Organizer unknown';
+
+  @override
+  String get eventDetailContinue => 'Continue to booking';
+
+  @override
+  String get checkoutTitle => 'Booking';
 }

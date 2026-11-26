@@ -631,6 +631,114 @@ abstract class AppLocalizations {
   /// In id, this message translates to:
   /// **'Tiket habis'**
   String get catalogSoldOut;
+
+  /// No description provided for @eventDetailTitle.
+  ///
+  /// In id, this message translates to:
+  /// **'Detail event'**
+  String get eventDetailTitle;
+
+  /// No description provided for @eventDetailRetry.
+  ///
+  /// In id, this message translates to:
+  /// **'Coba lagi'**
+  String get eventDetailRetry;
+
+  /// No description provided for @eventDetailAbout.
+  ///
+  /// In id, this message translates to:
+  /// **'Tentang event'**
+  String get eventDetailAbout;
+
+  /// No description provided for @eventDetailAboutEmpty.
+  ///
+  /// In id, this message translates to:
+  /// **'Deskripsi belum tersedia.'**
+  String get eventDetailAboutEmpty;
+
+  /// No description provided for @eventDetailDate.
+  ///
+  /// In id, this message translates to:
+  /// **'Tanggal'**
+  String get eventDetailDate;
+
+  /// No description provided for @eventDetailDateRange.
+  ///
+  /// In id, this message translates to:
+  /// **'{start} – {end}'**
+  String eventDetailDateRange(String start, String end);
+
+  /// No description provided for @eventDetailVenue.
+  ///
+  /// In id, this message translates to:
+  /// **'Venue'**
+  String get eventDetailVenue;
+
+  /// No description provided for @eventDetailVenueCity.
+  ///
+  /// In id, this message translates to:
+  /// **'{venue}, {city}'**
+  String eventDetailVenueCity(String venue, String city);
+
+  /// No description provided for @eventDetailArtist.
+  ///
+  /// In id, this message translates to:
+  /// **'Artis'**
+  String get eventDetailArtist;
+
+  /// No description provided for @eventDetailCategories.
+  ///
+  /// In id, this message translates to:
+  /// **'Kategori tiket'**
+  String get eventDetailCategories;
+
+  /// No description provided for @eventDetailCategoriesEmpty.
+  ///
+  /// In id, this message translates to:
+  /// **'Kategori tiket belum tersedia.'**
+  String get eventDetailCategoriesEmpty;
+
+  /// No description provided for @eventDetailRemaining.
+  ///
+  /// In id, this message translates to:
+  /// **'{count} tiket tersisa'**
+  String eventDetailRemaining(int count);
+
+  /// No description provided for @eventDetailCategorySoldOut.
+  ///
+  /// In id, this message translates to:
+  /// **'Habis'**
+  String get eventDetailCategorySoldOut;
+
+  /// No description provided for @eventDetailOrganizer.
+  ///
+  /// In id, this message translates to:
+  /// **'Penyelenggara'**
+  String get eventDetailOrganizer;
+
+  /// No description provided for @eventDetailOrganizerVerified.
+  ///
+  /// In id, this message translates to:
+  /// **'Promotor terverifikasi'**
+  String get eventDetailOrganizerVerified;
+
+  /// No description provided for @eventDetailOrganizerUnknown.
+  ///
+  /// In id, this message translates to:
+  /// **'Penyelenggara belum diketahui'**
+  String get eventDetailOrganizerUnknown;
+
+  /// No description provided for @eventDetailContinue.
+  ///
+  /// In id, this message translates to:
+  /// **'Lanjut ke pemesanan'**
+  String get eventDetailContinue;
+
+  /// No description provided for @checkoutTitle.
+  ///
+  /// In id, this message translates to:
+  /// **'Pemesanan'**
+  String get checkoutTitle;
 }
 
 class _AppLocalizationsDelegate

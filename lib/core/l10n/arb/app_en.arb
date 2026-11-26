@@ -109,5 +109,50 @@
     }
   },
   "catalogPriceUnavailable": "Price unavailable",
-  "catalogSoldOut": "Sold out"
+  "catalogSoldOut": "Sold out",
+  "eventDetailTitle": "Event details",
+  "eventDetailRetry": "Try again",
+  "eventDetailAbout": "About the event",
+  "eventDetailAboutEmpty": "Description not available yet.",
+  "eventDetailDate": "Date",
+  "eventDetailDateRange": "{start} – {end}",
+  "@eventDetailDateRange": {
+    "placeholders": {
+      "start": {
+        "type": "String"
+      },
+      "end": {
+        "type": "String"
+      }
+    }
+  },
+  "eventDetailVenue": "Venue",
+  "eventDetailVenueCity": "{venue}, {city}",
+  "@eventDetailVenueCity": {
+    "placeholders": {
+      "venue": {
+        "type": "String"
+      },
+      "city": {
+        "type": "String"
+      }
+    }
+  },
+  "eventDetailArtist": "Artist",
+  "eventDetailCategories": "Ticket categories",
+  "eventDetailCategoriesEmpty": "Ticket categories not available yet.",
+  "eventDetailRemaining": "{count} tickets left",
+  "@eventDetailRemaining": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "eventDetailCategorySoldOut": "Sold out",
+  "eventDetailOrganizer": "Organizer",
+  "eventDetailOrganizerVerified": "Verified organizer",
+  "eventDetailOrganizerUnknown": "Organizer unknown",
+  "eventDetailContinue": "Continue to booking",
+  "checkoutTitle": "Booking"
 }

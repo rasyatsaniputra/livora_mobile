@@ -12,4 +12,14 @@ abstract final class AppRoutes {
   static const loginVerify = '/login/verify';
   static const register = '/register';
   static const registerVerify = '/register/verify';
+
+  /// Pemesanan (tiket 09) — tujuan tombol "lanjut" di detail event.
+  static const checkout = '/checkout/:id';
+
+  /// Detail event (tiket 07) — anak dari tab katalog.
+  static String eventDetailPath(String id) =>
+      '/catalog/event/${Uri.encodeComponent(id)}';
+
+  static String checkoutPath(String id) =>
+      '/checkout/${Uri.encodeComponent(id)}';
 }

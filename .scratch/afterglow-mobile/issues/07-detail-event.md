@@ -4,11 +4,11 @@
 
 **Blocked by:** 06 (Katalog event).
 
-**Status:** ready-for-agent
+**Status:** done
 
-- [ ] Detail event tampil lengkap dari API
-- [ ] Kategori tiket (nama, harga, kuota) tampil read-only
-- [ ] Info organizer penyelenggara tampil
-- [ ] Tombol lanjut ke pemesanan ada (navigasi saja)
-- [ ] Error & loading state jelas
-- [ ] Test detail event & organizer lewat seam HTTP
+- [x] Detail event tampil lengkap dari API
+- [x] Kategori tiket (nama, harga, kuota) tampil read-only
+- [x] Info organizer penyelenggara tampil
+- [x] Tombol lanjut ke pemesanan ada (navigasi saja)
+- [x] Error & loading state jelas
+- [x] Test detail event & organizer lewat seam HTTP

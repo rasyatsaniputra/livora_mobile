@@ -290,4 +290,64 @@ class AppLocalizationsId extends AppLocalizations {
 
   @override
   String get catalogSoldOut => 'Tiket habis';
+
+  @override
+  String get eventDetailTitle => 'Detail event';
+
+  @override
+  String get eventDetailRetry => 'Coba lagi';
+
+  @override
+  String get eventDetailAbout => 'Tentang event';
+
+  @override
+  String get eventDetailAboutEmpty => 'Deskripsi belum tersedia.';
+
+  @override
+  String get eventDetailDate => 'Tanggal';
+
+  @override
+  String eventDetailDateRange(String start, String end) {
+    return '$start – $end';
+  }
+
+  @override
+  String get eventDetailVenue => 'Venue';
+
+  @override
+  String eventDetailVenueCity(String venue, String city) {
+    return '$venue, $city';
+  }
+
+  @override
+  String get eventDetailArtist => 'Artis';
+
+  @override
+  String get eventDetailCategories => 'Kategori tiket';
+
+  @override
+  String get eventDetailCategoriesEmpty => 'Kategori tiket belum tersedia.';
+
+  @override
+  String eventDetailRemaining(int count) {
+    return '$count tiket tersisa';
+  }
+
+  @override
+  String get eventDetailCategorySoldOut => 'Habis';
+
+  @override
+  String get eventDetailOrganizer => 'Penyelenggara';
+
+  @override
+  String get eventDetailOrganizerVerified => 'Promotor terverifikasi';
+
+  @override
+  String get eventDetailOrganizerUnknown => 'Penyelenggara belum diketahui';
+
+  @override
+  String get eventDetailContinue => 'Lanjut ke pemesanan';
+
+  @override
+  String get checkoutTitle => 'Pemesanan';
 }
