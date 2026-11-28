@@ -739,6 +739,66 @@ abstract class AppLocalizations {
   /// In id, this message translates to:
   /// **'Pemesanan'**
   String get checkoutTitle;
+
+  /// No description provided for @bookmarksTitle.
+  ///
+  /// In id, this message translates to:
+  /// **'Event tersimpan'**
+  String get bookmarksTitle;
+
+  /// No description provided for @bookmarksEmptyTitle.
+  ///
+  /// In id, this message translates to:
+  /// **'Belum ada event tersimpan'**
+  String get bookmarksEmptyTitle;
+
+  /// No description provided for @bookmarksEmptyBody.
+  ///
+  /// In id, this message translates to:
+  /// **'Ketuk ikon bookmark di detail event untuk menyimpannya di sini.'**
+  String get bookmarksEmptyBody;
+
+  /// No description provided for @bookmarksExplore.
+  ///
+  /// In id, this message translates to:
+  /// **'Jelajahi katalog'**
+  String get bookmarksExplore;
+
+  /// No description provided for @bookmarksRetry.
+  ///
+  /// In id, this message translates to:
+  /// **'Coba lagi'**
+  String get bookmarksRetry;
+
+  /// No description provided for @bookmarksRemove.
+  ///
+  /// In id, this message translates to:
+  /// **'Hapus bookmark'**
+  String get bookmarksRemove;
+
+  /// No description provided for @bookmarkRemoved.
+  ///
+  /// In id, this message translates to:
+  /// **'Event dihapus dari bookmark.'**
+  String get bookmarkRemoved;
+
+  /// No description provided for @bookmarkSaved.
+  ///
+  /// In id, this message translates to:
+  /// **'Event disimpan ke bookmark.'**
+  String get bookmarkSaved;
+
+  /// No description provided for @eventDetailBookmarkSave.
+  ///
+  /// In id, this message translates to:
+  /// **'Simpan ke bookmark'**
+  String get eventDetailBookmarkSave;
+
+  /// No description provided for @eventDetailBookmarkRemove.
+  ///
+  /// In id, this message translates to:
+  /// **'Hapus dari bookmark'**
+  String get eventDetailBookmarkRemove;
 }
 
 class _AppLocalizationsDelegate

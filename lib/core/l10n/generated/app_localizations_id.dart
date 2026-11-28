@@ -350,4 +350,35 @@ class AppLocalizationsId extends AppLocalizations {
 
   @override
   String get checkoutTitle => 'Pemesanan';
+
+  @override
+  String get bookmarksTitle => 'Event tersimpan';
+
+  @override
+  String get bookmarksEmptyTitle => 'Belum ada event tersimpan';
+
+  @override
+  String get bookmarksEmptyBody =>
+      'Ketuk ikon bookmark di detail event untuk menyimpannya di sini.';
+
+  @override
+  String get bookmarksExplore => 'Jelajahi katalog';
+
+  @override
+  String get bookmarksRetry => 'Coba lagi';
+
+  @override
+  String get bookmarksRemove => 'Hapus bookmark';
+
+  @override
+  String get bookmarkRemoved => 'Event dihapus dari bookmark.';
+
+  @override
+  String get bookmarkSaved => 'Event disimpan ke bookmark.';
+
+  @override
+  String get eventDetailBookmarkSave => 'Simpan ke bookmark';
+
+  @override
+  String get eventDetailBookmarkRemove => 'Hapus dari bookmark';
 }

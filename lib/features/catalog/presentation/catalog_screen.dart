@@ -2,11 +2,13 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 
 import '../../../core/l10n/generated/app_localizations.dart';
 import '../../../core/l10n/locale_provider.dart';
 import '../../../core/network/api_exception.dart';
 import '../../../core/presentation/error_message.dart';
+import '../../../core/router/app_routes.dart';
 import '../data/catalog_event.dart';
 import '../data/catalog_filters.dart';
 import 'catalog_controller.dart';
@@ -109,7 +111,15 @@ class _CatalogScreenState extends ConsumerState<CatalogScreen> {
     return Scaffold(
       appBar: AppBar(
         title: Text(l10n.navCatalog),
-        actions: const [_LanguageToggle()],
+        actions: [
+          IconButton(
+            key: const Key('catalogBookmarksButton'),
+            tooltip: l10n.bookmarksTitle,
+            icon: const Icon(Icons.bookmark_border),
+            onPressed: () => context.push(AppRoutes.bookmarks),
+          ),
+          const _LanguageToggle(),
+        ],
       ),
       body: Column(
         children: [

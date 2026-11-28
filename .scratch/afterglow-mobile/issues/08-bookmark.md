@@ -4,10 +4,10 @@
 
 **Blocked by:** 07 (Detail event + profil organizer).
 
-**Status:** ready-for-agent
+**Status:** done
 
-- [ ] Toggle bookmark (simpan/hapus) dari detail event berfungsi
-- [ ] Halaman daftar bookmark menampilkan event tersimpan
-- [ ] Hapus bookmark dari daftar berfungsi dan konsisten dengan detail
-- [ ] State kosong & error jelas
-- [ ] Test toggle & daftar bookmark lewat seam HTTP
+- [x] Toggle bookmark (simpan/hapus) dari detail event berfungsi
+- [x] Halaman daftar bookmark menampilkan event tersimpan
+- [x] Hapus bookmark dari daftar berfungsi dan konsisten dengan detail
+- [x] State kosong & error jelas
+- [x] Test toggle & daftar bookmark lewat seam HTTP
