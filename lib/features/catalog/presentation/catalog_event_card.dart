@@ -12,9 +12,13 @@ import 'sold_out_badge.dart';
 /// Kartu event katalog: poster, nama, tanggal, venue, genre, dan harga mulai
 /// dari. Ketuk kartu membuka halaman detail event (tiket 07).
 class CatalogEventCard extends StatelessWidget {
-  const CatalogEventCard({required this.event, super.key});
+  const CatalogEventCard({required this.event, this.action, super.key});
 
   final CatalogEvent event;
+
+  /// Aksi tambahan di kanan judul (mis. hapus bookmark pada daftar
+  /// tersimpan); katalog biasa tidak memakainya.
+  final Widget? action;
 
   @override
   Widget build(BuildContext context) {
@@ -70,6 +74,10 @@ class CatalogEventCard extends StatelessWidget {
                           if (event.soldOut) ...[
                             const SizedBox(width: 8),
                             SoldOutBadge(label: l10n.catalogSoldOut),
+                          ],
+                          if (action != null) ...[
+                            const SizedBox(width: 4),
+                            action!,
                           ],
                         ],
                       ),

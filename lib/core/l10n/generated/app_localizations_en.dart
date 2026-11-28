@@ -351,4 +351,35 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get checkoutTitle => 'Booking';
+
+  @override
+  String get bookmarksTitle => 'Saved events';
+
+  @override
+  String get bookmarksEmptyTitle => 'No saved events yet';
+
+  @override
+  String get bookmarksEmptyBody =>
+      'Tap the bookmark icon on an event\'s detail page to save it here.';
+
+  @override
+  String get bookmarksExplore => 'Browse catalog';
+
+  @override
+  String get bookmarksRetry => 'Try again';
+
+  @override
+  String get bookmarksRemove => 'Remove bookmark';
+
+  @override
+  String get bookmarkRemoved => 'Event removed from bookmarks.';
+
+  @override
+  String get bookmarkSaved => 'Event saved to bookmarks.';
+
+  @override
+  String get eventDetailBookmarkSave => 'Save to bookmarks';
+
+  @override
+  String get eventDetailBookmarkRemove => 'Remove from bookmarks';
 }

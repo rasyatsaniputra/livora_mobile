@@ -20,6 +20,9 @@ abstract final class AppRoutes {
   static String eventDetailPath(String id) =>
       '/catalog/event/${Uri.encodeComponent(id)}';
 
+  /// Daftar bookmark (tiket 08) — anak dari tab katalog.
+  static const bookmarks = '/catalog/bookmarks';
+
   static String checkoutPath(String id) =>
       '/checkout/${Uri.encodeComponent(id)}';
 }

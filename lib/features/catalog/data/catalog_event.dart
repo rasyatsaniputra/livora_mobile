@@ -7,8 +7,8 @@ part 'catalog_event.g.dart';
 
 /// Satu event pada katalog Soundtix (`GET /events`).
 ///
-/// Hanya field yang dipakai kartu katalog (tiket 06) yang dipetakan; detail
-/// event, bookmark, dan kuota per kategori ditambahkan modulnya masing-masing.
+/// Hanya field ringkasan yang dipakai kartu katalog dan daftar bookmark yang
+/// dipetakan; detail event dan kuota per kategori punya model sendiri.
 @freezed
 abstract class CatalogEvent with _$CatalogEvent {
   const factory CatalogEvent({

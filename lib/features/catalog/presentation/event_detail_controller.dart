@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../core/network/api_exception.dart';
 import '../data/event_detail.dart';
 import '../data/event_detail_repository.dart';
+import 'bookmark_store.dart';
 
 /// Status halaman detail event (tiket 07).
 sealed class EventDetailState {
@@ -48,11 +49,42 @@ class EventDetailController extends Notifier<EventDetailState> {
 
   Future<void> retry() => load();
 
+  /// Id event yang dipakai untuk status bookmark — mengikuti id dari respons
+  /// detail bila ada, dengan id path sebagai cadangan.
+  String get bookmarkEventId {
+    final current = state;
+    return current is EventDetailReady
+        ? (current.detail.id ?? eventId)
+        : eventId;
+  }
+
+  /// Toggle simpan/hapus bookmark (tiket 08). Status bersama diperbarui oleh
+  /// [BookmarkStore] sehingga daftar bookmark ikut konsisten. Mengembalikan
+  /// jenis error bila gagal, atau null bila berhasil.
+  Future<ApiExceptionKind?> toggleBookmark() async {
+    final current = state;
+    if (current is! EventDetailReady) return null;
+    try {
+      await ref.read(bookmarkStoreProvider.notifier).toggle(bookmarkEventId);
+      return null;
+    } on ApiException catch (e) {
+      return e.kind;
+    } on Exception {
+      return ApiExceptionKind.request;
+    }
+  }
+
   Future<void> _fetch() async {
     try {
       final detail = await ref
           .read(eventDetailRepositoryProvider)
           .fetchEventDetail(eventId);
+      if (!ref.mounted) return;
+      // Status dari server menjadi titik awal bersama untuk layar detail dan
+      // daftar bookmark.
+      ref
+          .read(bookmarkStoreProvider.notifier)
+          .seed(detail.id ?? eventId, detail.bookmarked);
       final organizer = await _fetchOrganizerOrNull(detail.organizerId);
       if (!ref.mounted) return;
       state = EventDetailReady(detail: detail, organizer: organizer);

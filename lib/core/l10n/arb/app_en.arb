@@ -154,5 +154,15 @@
   "eventDetailOrganizerVerified": "Verified organizer",
   "eventDetailOrganizerUnknown": "Organizer unknown",
   "eventDetailContinue": "Continue to booking",
-  "checkoutTitle": "Booking"
+  "checkoutTitle": "Booking",
+  "bookmarksTitle": "Saved events",
+  "bookmarksEmptyTitle": "No saved events yet",
+  "bookmarksEmptyBody": "Tap the bookmark icon on an event's detail page to save it here.",
+  "bookmarksExplore": "Browse catalog",
+  "bookmarksRetry": "Try again",
+  "bookmarksRemove": "Remove bookmark",
+  "bookmarkRemoved": "Event removed from bookmarks.",
+  "bookmarkSaved": "Event saved to bookmarks.",
+  "eventDetailBookmarkSave": "Save to bookmarks",
+  "eventDetailBookmarkRemove": "Remove from bookmarks"
 }

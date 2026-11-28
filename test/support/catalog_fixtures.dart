@@ -12,6 +12,7 @@ Map<String, Object?> catalogEventJson({
   Object? minPrice = 350000,
   int soldQuota = 35,
   bool soldOut = false,
+  bool bookmarked = false,
 }) => {
   'id': id,
   'nama_event': name,
@@ -35,7 +36,7 @@ Map<String, Object?> catalogEventJson({
   'sold_quota': soldQuota,
   'available_quota': 5000 - soldQuota,
   'is_sold_out': soldOut,
-  'is_bookmarked': false,
+  'is_bookmarked': bookmarked,
   'occupancy_percent': 1,
 };
 
@@ -106,6 +107,7 @@ Map<String, Object?> eventDetailJson({
   int soldQuota = 35,
   int availableQuota = 1465,
   bool soldOut = false,
+  bool bookmarked = false,
   List<Map<String, Object?>>? categories,
 }) => {
   ...catalogEventJson(
@@ -116,6 +118,7 @@ Map<String, Object?> eventDetailJson({
     genre: genre,
     posterUrl: posterUrl,
     startsAt: startsAt,
+    bookmarked: bookmarked,
   ),
   'deskripsi': description,
   'artis': artist,
@@ -127,7 +130,7 @@ Map<String, Object?> eventDetailJson({
   'available_quota': availableQuota,
   'is_sold_out': soldOut,
   'occupancy_percent': 2,
-  'is_bookmarked': false,
+  'is_bookmarked': bookmarked,
   'lineup': ['Sheila on 7', 'Tulus', 'Hindia'],
   'rundown': [
     {'waktu': '19:00', 'acara': 'Open gate'},
@@ -172,4 +175,47 @@ Map<String, Object?> organizerResponse([Map<String, Object?>? organizer]) => {
   'success': true,
   'message': 'Profil publik promotor berhasil diambil',
   'data': organizer ?? organizerJson(),
+};
+
+/// Satu event pada daftar bookmark (`GET /users/bookmarks`). Bentuknya
+/// ringkasan event + `bookmarked_at`; tidak memuat genre/kota/status habis
+/// seperti katalog.
+Map<String, Object?> bookmarkEventJson({
+  Object? id = 1,
+  String name = 'Soundtix Fest 2026: The Grand Stage',
+  String venue = 'Gelora Bung Karno Stadium, Jakarta',
+  String? posterUrl = '/uploads/fest.png',
+  String startsAt = '2026-12-30T19:00:00.000Z',
+  String endsAt = '2026-12-31T01:30:00.000Z',
+  Object? minPrice = 350000,
+  String bookmarkedAt = '2026-11-01T10:00:00.000Z',
+}) => {
+  'id': id,
+  'nama_event': name,
+  'poster_url': posterUrl,
+  'tanggal_mulai': startsAt,
+  'tanggal_selesai': endsAt,
+  'alamat': venue,
+  'lat': -6.2186,
+  'lng': 106.8026,
+  'artis': 'Sheila on 7, Tulus, Hindia',
+  'status': 'published',
+  'bookmarked_at': bookmarkedAt,
+  'min_price': minPrice,
+  'is_bookmarked': true,
+};
+
+Map<String, Object?> bookmarksResponse(List<Map<String, Object?>> events) => {
+  'success': true,
+  'message': 'Daftar konser tersimpan (wishlist) berhasil diambil',
+  'data': events,
+};
+
+/// Respons `POST /events/:id/bookmark` — data berisi status hasil toggle.
+Map<String, Object?> bookmarkToggleResponse(bool bookmarked) => {
+  'success': true,
+  'message': bookmarked
+      ? 'Event disimpan ke bookmark'
+      : 'Event dihapus dari bookmark',
+  'data': {'bookmarked': bookmarked},
 };

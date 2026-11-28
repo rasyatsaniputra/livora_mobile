@@ -154,5 +154,15 @@
   "eventDetailOrganizerVerified": "Promotor terverifikasi",
   "eventDetailOrganizerUnknown": "Penyelenggara belum diketahui",
   "eventDetailContinue": "Lanjut ke pemesanan",
-  "checkoutTitle": "Pemesanan"
+  "checkoutTitle": "Pemesanan",
+  "bookmarksTitle": "Event tersimpan",
+  "bookmarksEmptyTitle": "Belum ada event tersimpan",
+  "bookmarksEmptyBody": "Ketuk ikon bookmark di detail event untuk menyimpannya di sini.",
+  "bookmarksExplore": "Jelajahi katalog",
+  "bookmarksRetry": "Coba lagi",
+  "bookmarksRemove": "Hapus bookmark",
+  "bookmarkRemoved": "Event dihapus dari bookmark.",
+  "bookmarkSaved": "Event disimpan ke bookmark.",
+  "eventDetailBookmarkSave": "Simpan ke bookmark",
+  "eventDetailBookmarkRemove": "Hapus dari bookmark"
 }

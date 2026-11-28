@@ -9,6 +9,7 @@ import '../../../core/presentation/currency_format.dart';
 import '../../../core/presentation/error_message.dart';
 import '../../../core/router/app_routes.dart';
 import '../data/event_detail.dart';
+import 'bookmark_store.dart';
 import 'event_detail_controller.dart';
 import 'event_poster.dart';
 import 'sold_out_badge.dart';
@@ -26,6 +27,8 @@ class EventDetailScreen extends ConsumerStatefulWidget {
 }
 
 class _EventDetailScreenState extends ConsumerState<EventDetailScreen> {
+  var _bookmarkBusy = false;
+
   @override
   void initState() {
     super.initState();
@@ -37,14 +40,59 @@ class _EventDetailScreenState extends ConsumerState<EventDetailScreen> {
     });
   }
 
+  Future<void> _toggleBookmark() async {
+    setState(() => _bookmarkBusy = true);
+    final kind = await ref
+        .read(eventDetailControllerProvider(widget.eventId).notifier)
+        .toggleBookmark();
+    if (!mounted) return;
+    setState(() => _bookmarkBusy = false);
+
+    final l10n = AppLocalizations.of(context)!;
+    final eventId = ref
+        .read(eventDetailControllerProvider(widget.eventId).notifier)
+        .bookmarkEventId;
+    final bookmarked = ref.read(bookmarkStoreProvider)[eventId] ?? false;
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: Text(
+          kind != null
+              ? apiErrorText(kind, l10n)
+              : bookmarked
+              ? l10n.bookmarkSaved
+              : l10n.bookmarkRemoved,
+        ),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context)!;
     final provider = eventDetailControllerProvider(widget.eventId);
     final state = ref.watch(provider);
+    final bookmarkEventId = state is EventDetailReady
+        ? (state.detail.id ?? widget.eventId)
+        : widget.eventId;
+    final bookmarked =
+        ref.watch(bookmarkStoreProvider)[bookmarkEventId] ??
+        (state is EventDetailReady ? state.detail.bookmarked : false);
 
     return Scaffold(
-      appBar: AppBar(title: Text(l10n.eventDetailTitle)),
+      appBar: AppBar(
+        title: Text(l10n.eventDetailTitle),
+        actions: [
+          if (state is EventDetailReady)
+            IconButton(
+              key: const Key('eventDetailBookmarkButton'),
+              tooltip: bookmarked
+                  ? l10n.eventDetailBookmarkRemove
+                  : l10n.eventDetailBookmarkSave,
+              onPressed: _bookmarkBusy ? null : _toggleBookmark,
+              icon: Icon(bookmarked ? Icons.bookmark : Icons.bookmark_border),
+            ),
+        ],
+      ),
       body: switch (state) {
         EventDetailLoading() => const Center(
           child: CircularProgressIndicator(),

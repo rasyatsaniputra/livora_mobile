@@ -6,6 +6,7 @@ import '../../features/auth/presentation/login_screen.dart';
 import '../../features/auth/presentation/otp_verification_screen.dart';
 import '../../features/auth/presentation/profile_screen.dart';
 import '../../features/auth/presentation/register_screen.dart';
+import '../../features/catalog/presentation/bookmark_list_screen.dart';
 import '../../features/catalog/presentation/catalog_screen.dart';
 import '../../features/catalog/presentation/event_detail_screen.dart';
 import '../l10n/generated/app_localizations.dart';
@@ -68,6 +69,10 @@ final appRouterProvider = Provider<GoRouter>((ref) {
                   builder: (context, state) => EventDetailScreen(
                     eventId: state.pathParameters['id']!,
                   ),
+                ),
+                GoRoute(
+                  path: 'bookmarks',
+                  builder: (context, state) => const BookmarkListScreen(),
                 ),
               ],
             ),
